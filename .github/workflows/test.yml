@@ -15,7 +15,7 @@ jobs:
   # This job prepare environment and run the analysis on a test file
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     env:
       PR_AUTHOR: ${{ github.event.pull_request.user.login }}
       PR_TITLE: ${{ github.event.pull_request.title }}
@@ -27,10 +27,9 @@ jobs:
       
       # Setup GHDL environment
       - name: Setup GHDL
-        uses: ghdl/setup-ghdl-ci@nightly
+        uses: ghdl/setup-ghdl-ci@v1
         with:
-          # Select GHDL backend (mcode, llvm or gcc)
-          backend: mcode
+          version: nightly # or a specific version like '2.0.0'
   
       - name: Run the test script
         run: |
