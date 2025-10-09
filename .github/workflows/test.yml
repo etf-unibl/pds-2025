@@ -27,9 +27,9 @@ jobs:
       
       # Setup GHDL environment
       - name: Setup GHDL
-        uses: ghdl/setup-ghdl-ci@nightly
+        uses: ghdl/setup-ghdl@v1
         with:
-          version: nightly # or a specific version like '2.0.0'
+          version: latest # or a specific version like '2.0.0'
           # Select GHDL backend (mcode, llvm or gcc)
           backend: mcode
   
