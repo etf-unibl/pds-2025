@@ -98,7 +98,7 @@ jobs:
   # This job prepares environment and runs simulation script
   verif:
     # Uncomment the line below to disable the verif job
-    if: ${{ false }}
+    #if: ${{ false }}
     # The job runs on a self-hosted runner
     runs-on: self-hosted
     env:
