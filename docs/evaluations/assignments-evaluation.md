@@ -8,5 +8,6 @@
 | Smiljanić Dejana | | | | | |
 | Vulin Ana | | | | | |
 | Miljević Nataša | | | | | |
+| Savičić Anđela | | | | | |
 
 **Napomena:** Svaki zadatak nosi 5% ocjene (osim četvrtog zadatka koji nosi ukupno 10%) ukoliko su dostavljeni svi zahtjevani elementi.
