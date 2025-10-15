@@ -13,5 +13,6 @@ entity jk_ff is
 end jk_ff;
 
 architecture jk_ff_arch of jk_ff is
+begin
 
 end architecture;
