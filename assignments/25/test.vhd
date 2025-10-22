@@ -1,5 +1,5 @@
 library IEEE;
-use IEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_1164.ALL;
 
 entity test is 
 end entity test;
