@@ -22,14 +22,16 @@ architecture four_bit_arch of four_bit_comparator is
     );
 	end component;
 	-- High bits (i_A[3:2], i_B[3:2]) and low bits (i_A[1:0], i_B[1:0]) are compared separately
-	-- signals are combined to determine final outputs: i_A>I_B, i_A=i_B, i_A<i_B
+	-- signals are combined to determine final outputs: i_A>i_B, i_A=i_B, i_A<i_B
 	signal high_gt, high_eq, high_lt : std_logic;
    signal low_gt, low_eq, low_lt   : std_logic;
 	
 begin
 
+	-- Compare the higher 2 bits
 	cmp_high : two_bit_comparator
 		port map (a => i_A(3 downto 2), b =>i_B(3 downto 2), agtb => high_gt, aeqb => high_eq, altb => high_lt);
+	-- Compare the lower 2 bits
 	cmp_low : two_bit_comparator
 		port map (a => i_A(1 downto 0), b => i_B(1 downto 0), agtb => low_gt, aeqb => low_eq, altb => low_lt);
 	
