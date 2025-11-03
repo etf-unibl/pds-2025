@@ -31,5 +31,6 @@ begin
 		port map(i_1 => i_A(2), i_2 => i_B(2), c_in => s2, sum => o_SUM(2), c_out => s3);
 	u4 : one_bit_full_adder
 		port map(i_1 => i_A(3), i_2 => i_B(3), c_in => s3, sum => o_SUM(3), c_out => o_C);
+	
 end str_arch;		
 		
