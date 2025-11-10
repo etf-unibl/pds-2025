@@ -46,7 +46,7 @@ entity four_bit_signed_comparator_v2 is
   );
 end entity four_bit_signed_comparator_v2;
 
-architecture arch of four_bit_signed_comparator_v2 is
+architecture rtl of four_bit_signed_comparator_v2 is
   signal a3, a2, a1, a0 : std_logic;
   signal b3, b2, b1, b0 : std_logic;
 begin
@@ -64,4 +64,4 @@ begin
             ((a3 xnor b3) and ((a2 and (not b2)) or
             ((a2 xnor b2) and a1 and (not b1)) or
             ((a2 xnor b2) and (a1 xnor b1) and a0 and (not b0))));
-end architecture arch;
+end architecture rtl;

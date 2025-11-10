@@ -47,7 +47,7 @@ entity four_bit_signed_comparator is
   );
 end entity four_bit_signed_comparator;
 
-architecture arch of four_bit_signed_comparator is
+architecture rtl of four_bit_signed_comparator is
 begin
-  o_AGTB <= '1' when signed(A_i) > signed(B_i) else '0';
-end architecture arch;
+  o_AGTB <= '1' when signed(i_A) > signed(i_B) else '0';
+end architecture rtl;
