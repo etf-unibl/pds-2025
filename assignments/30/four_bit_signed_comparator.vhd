@@ -41,13 +41,13 @@ use ieee.numeric_std.all;
 
 entity four_bit_signed_comparator is
   port (
-    A_i    : in  std_logic_vector(3 downto 0);
-    B_i    : in  std_logic_vector(3 downto 0);
-    AGTB_o : out std_logic
+    i_A    : in  std_logic_vector(3 downto 0);
+    i_B    : in  std_logic_vector(3 downto 0);
+    o_AGTB : out std_logic
   );
 end entity four_bit_signed_comparator;
 
 architecture arch of four_bit_signed_comparator is
 begin
-  AGTB_o <= '1' when signed(A_i) > signed(B_i) else '0';
+  o_AGTB <= '1' when signed(A_i) > signed(B_i) else '0';
 end architecture arch;

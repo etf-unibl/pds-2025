@@ -40,9 +40,9 @@ use ieee.std_logic_1164.all;
 
 entity four_bit_signed_comparator_v2 is
   port (
-    A_i    : in  std_logic_vector(3 downto 0);
-    B_i    : in  std_logic_vector(3 downto 0);
-    AGTB_o : out std_logic
+    i_A    : in  std_logic_vector(3 downto 0);
+    i_B    : in  std_logic_vector(3 downto 0);
+    o_AGTB : out std_logic
   );
 end entity four_bit_signed_comparator_v2;
 
@@ -50,17 +50,17 @@ architecture arch of four_bit_signed_comparator_v2 is
   signal a3, a2, a1, a0 : std_logic;
   signal b3, b2, b1, b0 : std_logic;
 begin
-  a3 <= A_i(3);
-  a2 <= A_i(2);
-  a1 <= A_i(1);
-  a0 <= A_i(0);
+  a3 <= i_A(3);
+  a2 <= i_A(2);
+  a1 <= i_A(1);
+  a0 <= i_A(0);
 
-  b3 <= B_i(3);
-  b2 <= B_i(2);
-  b1 <= B_i(1);
-  b0 <= B_i(0);
+  b3 <= i_B(3);
+  b2 <= i_B(2);
+  b1 <= i_B(1);
+  b0 <= i_B(0);
 
-  AGTB_o <= ((not a3) and b3) or
+  o_AGTB <= ((not a3) and b3) or
             ((a3 xnor b3) and ((a2 and (not b2)) or
             ((a2 xnor b2) and a1 and (not b1)) or
             ((a2 xnor b2) and (a1 xnor b1) and a0 and (not b0))));
