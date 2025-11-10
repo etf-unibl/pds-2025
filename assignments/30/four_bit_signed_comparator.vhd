@@ -10,34 +10,7 @@ entity four_bit_signed_comparator is
 			 );
 end four_bit_signed_comparator;
 
-architecture rtl1 of four_bit_signed_comparator is
+architecture rtl of four_bit_signed_comparator is
 begin
 	o_AGTB <= '1' when signed(i_A) > signed (i_B) else '0';
-end rtl1;
-
-architecture rtl2 of four_bit_signed_comparator is
-	signal a3,a2, a1, a0 : std_logic;
-	signal b3,b2, b1, b0 : std_logic;
-	
-begin
-
--- A > B kada je A pozitivno a B negativno i ako je prvi niyi bit A=1 i B=0 za jednake A3 i B3(bit znaka)
-	a3 <= i_A(3);
-    a2 <= i_A(2);
-    a1 <= i_A(1);
-    a0 <= i_A(0);
-
-    b3 <= i_B(3);
-    b2 <= i_B(2);
-    b1 <= i_B(1);
-    b0 <= i_B(0);
-
-	o_AGTB  <= ((not a3) and b3) or 
-			    	((a3 xnor b3) and ((a2 and (not b2)) or 
-					((a2 xnor b2) and a1 and (not b1)) or((a2 xnor b2) and (a1 xnor b1) and a0 and (not b0))));
-end rtl2;
-
-configuration cfg of four_bit_signed_comparator is 
-	for rtl2
-	end for;
-end cfg;
+end rtl;
