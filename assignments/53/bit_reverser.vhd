@@ -8,7 +8,8 @@
 --
 -- description:
 --
---   This file implements a .
+--   This file implements a bit-reversing unit, which reverses the order
+--   of bits in a 16-bit input vector or does nothing (based on mode). 
 --
 -----------------------------------------------------------------------------
 -- Copyright (c) 2025 Faculty of Electrical Engineering
