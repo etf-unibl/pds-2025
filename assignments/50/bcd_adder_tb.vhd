@@ -43,7 +43,7 @@ use ieee.numeric_std.all;
 entity bcd_adder_tb is
 end bcd_adder_tb;
 
-architecture bcd_adder_tb_arch of bcd_adder_tb is
+architecture arch of bcd_adder_tb is
   component bcd_adder is
     port(
       A_i   : in  std_logic_vector(11 downto 0);
@@ -105,13 +105,13 @@ architecture bcd_adder_tb_arch of bcd_adder_tb is
     "0001011100110100"
   );
 begin
-  DUT : bcd_adder port map(
+  uut : bcd_adder port map(
     A_i => s_A,
     B_i => s_B,
     SUM_o => s_SUM
   );
 
-  STIMULI : process
+  tb : process
     variable error_count : integer := 0;
     variable total_tests : integer := 0;
     variable expected : std_logic_vector(15 downto 0);
@@ -162,5 +162,5 @@ begin
       report "--- TEST FAILED ---";
     end if;
     wait;
-  end process;
-end;
+  end process tb;
+end arch;

@@ -48,7 +48,7 @@ entity bcd_adder is
   );
 end bcd_adder;
 
-architecture bcd_adder_arch of bcd_adder is
+architecture arch of bcd_adder is
   component single_digit_bcd_adder is
     port(
       A_i   : in  std_logic_vector(3 downto 0);
@@ -88,4 +88,4 @@ begin
     SUM_o   => SUM_o(15 downto 12),
     CARRY_o => s_carry_out(3)
   );
-end bcd_adder_arch;
+end arch;

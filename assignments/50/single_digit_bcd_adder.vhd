@@ -50,7 +50,7 @@ entity single_digit_bcd_adder is
 );
 end single_digit_bcd_adder;
 
-architecture single_digit_bcd_adder_arch of single_digit_bcd_adder is
+architecture arch of single_digit_bcd_adder is
 begin
 process(A_i, B_i, CARRY_i)
   variable temp : unsigned(4 downto 0);
@@ -64,4 +64,4 @@ begin
     SUM_o <= std_logic_vector(resize(temp, 4));
   end if;
 end process;
-end architecture;
+end arch;
