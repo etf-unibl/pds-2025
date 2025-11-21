@@ -88,4 +88,4 @@ begin
     SUM_o   => SUM_o(15 downto 12),
     CARRY_o => s_carry_out(3)
   );
-end bcd_adder_arch architecture;
+end bcd_adder_arch;
