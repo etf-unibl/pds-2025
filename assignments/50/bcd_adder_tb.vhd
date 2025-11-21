@@ -121,34 +121,46 @@ begin
 
 		assert false report "--- TESTING ---" severity note;
 		for i in input_vectors_A'range loop
+			total_tests := total_tests + 1;
 			s_A <= input_vectors_A(i);
 			s_B <= input_vectors_B(i);
 			wait for 10 ns;
 			expected := output_vectors(i);
 
-			assert s_SUM = expected
-			report "Adding failed: inputs="
-				& integer'image(to_integer(unsigned(s_A(11 downto 8))))
-				& integer'image(to_integer(unsigned(s_A(7 downto 4))))
-				& integer'image(to_integer(unsigned(s_A(3 downto 0))))
-				& " and "
-				& integer'image(to_integer(unsigned(s_B(11 downto 8))))
-				& integer'image(to_integer(unsigned(s_B(7 downto 4))))
-				& integer'image(to_integer(unsigned(s_B(3 downto 0))))
-				& "; expected ="
-				& integer'image(to_integer(unsigned(expected(15 downto 12))))
-				& integer'image(to_integer(unsigned(expected(11 downto 8))))
-				& integer'image(to_integer(unsigned(expected(7 downto 4))))
-				& integer'image(to_integer(unsigned(expected(3 downto 0))))
-				& "; actual="
-				& integer'image(to_integer(unsigned(s_SUM(15 downto 12))))
-				& integer'image(to_integer(unsigned(s_SUM(11 downto 8))))
-				& integer'image(to_integer(unsigned(s_SUM(7 downto 4))))
-				& integer'image(to_integer(unsigned(s_SUM(3 downto 0))))
-			severity error;
+			if(s_SUM /= expected) then
+				assert false
+				report "Adding failed: inputs="
+					& integer'image(to_integer(unsigned(s_A(11 downto 8))))
+					& integer'image(to_integer(unsigned(s_A(7 downto 4))))
+					& integer'image(to_integer(unsigned(s_A(3 downto 0))))
+					& " and "
+					& integer'image(to_integer(unsigned(s_B(11 downto 8))))
+					& integer'image(to_integer(unsigned(s_B(7 downto 4))))
+					& integer'image(to_integer(unsigned(s_B(3 downto 0))))
+					& "; expected ="
+					& integer'image(to_integer(unsigned(expected(15 downto 12))))
+					& integer'image(to_integer(unsigned(expected(11 downto 8))))
+					& integer'image(to_integer(unsigned(expected(7 downto 4))))
+					& integer'image(to_integer(unsigned(expected(3 downto 0))))
+					& "; actual="
+					& integer'image(to_integer(unsigned(s_SUM(15 downto 12))))
+					& integer'image(to_integer(unsigned(s_SUM(11 downto 8))))
+					& integer'image(to_integer(unsigned(s_SUM(7 downto 4))))
+					& integer'image(to_integer(unsigned(s_SUM(3 downto 0))))
+				severity error;
+				error_count := error_count + 1;
+			end if;
 		end loop;
 		wait for 10 ns;
 		report "--- FINISHED TESTING ---";
+		report "Total tests: " & integer'image(total_tests);
+		report "Failed tests: " & integer'image(error_count);
+		
+		if(error_count = 0) then
+			report "--- TEST PASSED ---";
+		else
+			report "--- TEST FAILED ---";
+		end if;
 		wait;
 	end process;
 end;

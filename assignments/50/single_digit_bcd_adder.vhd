@@ -4,11 +4,11 @@
 -- https://github.com/etf-unibl/pds-2025/
 -----------------------------------------------------------------------------
 --
--- unit name:     bcd_adder
+-- unit name:     single_digit_bcd_adder
 --
 -- description:
 --
---   This file implements three digit BCD adder using single_digit_bcd_adder unit
+--   This file implements single digit BCD adder
 --
 -----------------------------------------------------------------------------
 -- Copyright (c) 2025 Faculty of Electrical Engineering
@@ -40,52 +40,28 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity bcd_adder is
+entity single_digit_bcd_adder is
 	port (
-	A_i   : in  std_logic_vector(11 downto 0);
-	B_i   : in  std_logic_vector(11 downto 0);
-	SUM_o : out std_logic_vector(15 downto 0)
+	A_i   : in std_logic_vector(3 downto 0);
+	B_i   : in std_logic_vector(3 downto 0);
+	CARRY_i : in std_logic;
+	SUM_o : out std_logic_vector(3 downto 0);
+	CARRY_o : out std_logic
 );
-end bcd_adder;
+end single_digit_bcd_adder;
 
-architecture bcd_adder_arch of bcd_adder is
-	component single_digit_bcd_adder is
-	port(
-		A_i   : in  std_logic_vector(3 downto 0);
-		B_i   : in  std_logic_vector(3 downto 0);
-		CARRY_i : in std_logic;
-		SUM_o : out std_logic_vector(3 downto 0);
-		CARRY_o : out std_logic
-	);
-	end component;
-	signal s_carry_out : std_logic_vector(3 downto 0) := "0000";
+architecture single_digit_bcd_adder_arch of single_digit_bcd_adder is
 begin
-	a0 : single_digit_bcd_adder port map(
-		A_i => A_i(3 downto 0),
-		B_i => B_i(3 downto 0),
-		CARRY_i => '0',
-		SUM_o => SUM_o(3 downto 0),
-		CARRY_o => s_carry_out(0)
-	);
-	a1 : single_digit_bcd_adder port map(
-		A_i => A_i(7 downto 4),
-		B_i => B_i(7 downto 4),
-		CARRY_i => s_carry_out(0),
-		SUM_o => SUM_o(7 downto 4),
-		CARRY_o => s_carry_out(1)
-	);
-	a2 : single_digit_bcd_adder port map(
-		A_i => A_i(11 downto 8),
-		B_i => B_i(11 downto 8),
-		CARRY_i => s_carry_out(1),
-		SUM_o => SUM_o(11 downto 8),
-		CARRY_o => s_carry_out(2)
-	);
-	a3 : single_digit_bcd_adder port map(
-		A_i => "0000",
-		B_i => "0000",
-		CARRY_i => s_carry_out(2),
-		SUM_o => SUM_o(15 downto 12),
-		CARRY_o => s_carry_out(3)
-	);
+process(A_i, B_i, CARRY_i)
+	variable temp : unsigned(4 downto 0);
+begin
+	temp := unsigned('0'&A_i) + unsigned('0'&B_i) + ("0000"&CARRY_i);
+	if(temp > 9) then
+		CARRY_o <= '1';
+		SUM_o <= std_logic_vector(resize((temp + "00110"),4));
+	else
+		CARRY_o <= '0';
+		SUM_o <= std_logic_vector(resize(temp, 4));
+	end if;
+end process;
 end architecture;
