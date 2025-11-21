@@ -54,9 +54,9 @@ architecture arch of bcd_adder_tb is
   signal s_A : std_logic_vector(11 downto 0);
   signal s_B : std_logic_vector(11 downto 0);
   signal s_SUM : std_logic_vector(15 downto 0);
-  type output_vector_array is array (natural range <>) of std_logic_vector (15 downto 0);
-  type input_vector_array is array (natural range <>) of std_logic_vector (11 downto 0);
-  constant input_vectors_A : input_vector_array := (
+  type t_output_vector_array is array (natural range <>) of std_logic_vector (15 downto 0);
+  type t_input_vector_array is array (natural range <>) of std_logic_vector (11 downto 0);
+  constant c_A : t_input_vector_array := (
     "000000000000",
     "100010001001",
     "011101111001",
@@ -72,7 +72,7 @@ architecture arch of bcd_adder_tb is
     "100001000101",
     "100001000101"
   );
-  constant input_vectors_B : input_vector_array := (
+  constant c_B : t_input_vector_array := (
     "100001000101",
     "010110010111",
     "100000101001",
@@ -88,7 +88,7 @@ architecture arch of bcd_adder_tb is
     "001100110011",
     "100010001001"
   );
-  constant output_vectors : output_vector_array := (
+  constant c_SUM : t_output_vector_array := (
     "0000100001000101",
     "0001010010000110",
     "0001011000001000",
@@ -106,8 +106,8 @@ architecture arch of bcd_adder_tb is
   );
 begin
   uut : bcd_adder port map(
-    A_i => s_A,
-    B_i => s_B,
+    A_i   => s_A,
+    B_i   => s_B,
     SUM_o => s_SUM
   );
 
@@ -120,14 +120,14 @@ begin
     s_B <= "000000000000";
 
     assert false report "--- TESTING ---" severity note;
-    for i in input_vectors_A'range loop
+    for i in c_A'range loop
       total_tests := total_tests + 1;
-      s_A <= input_vectors_A(i);
-      s_B <= input_vectors_B(i);
+      s_A <= c_A(i);
+      s_B <= c_B(i);
       wait for 10 ns;
-      expected := output_vectors(i);
+      expected := c_SUM(i);
 
-      if(s_SUM /= expected) then
+      if s_SUM /= expected  then
         assert false report "Adding failed: inputs="
           & integer'image(to_integer(unsigned(s_A(11 downto 8))))
           & integer'image(to_integer(unsigned(s_A(7 downto 4))))
@@ -155,7 +155,7 @@ begin
     assert false report "Total tests: " & integer'image(total_tests);
     assert false report "Failed tests: " & integer'image(error_count);
 
-    if(error_count = 0) then
+    if error_count = 0 then
       assert false report "--- TEST PASSED ---";
     else
       assert false report "--- TEST FAILED ---";
