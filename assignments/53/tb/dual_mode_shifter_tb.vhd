@@ -43,7 +43,7 @@ use ieee.numeric_std.all;
 
 entity dual_mode_shifter_tb is
 end dual_mode_shifter_tb;
-architecture dual_mode_shifter_arch of dual_mode_shifter_tb is
+architecture arch of dual_mode_shifter_tb is
 -- constants
 -- signals
   signal MODE_i   : std_logic;
@@ -56,8 +56,8 @@ architecture dual_mode_shifter_arch of dual_mode_shifter_tb is
     SH_OUT_o : out std_logic_vector(15 downto 0)
     );
   end component;
-  type test_vector_array is array (natural range <>) of std_logic_vector (15 downto 0);
-  constant test_vectors : test_vector_array := (
+  type t_test_vector_array is array (natural range <>) of std_logic_vector (15 downto 0);
+  constant c_TEST_VECTORS : t_test_vector_array := (
   "0000000000000000",
   "1111111111111111",
   "1010101010101010",
@@ -76,8 +76,8 @@ begin
   i1 : dual_mode_shifter
   port map (
 -- list connections between master ports and signals
-  MODE_i => MODE_i,
-  SH_IN_i => SH_IN_i,
+  MODE_i   => MODE_i,
+  SH_IN_i  => SH_IN_i,
   SH_OUT_o => SH_OUT_o
   );
   init : process
@@ -90,35 +90,46 @@ begin
 -- optional sensitivity list
 -- (        )
 -- variable declarations
-    variable expected : std_logic_vector(15 downto 0);
+    variable expected       : std_logic_vector(15 downto 0);
+    variable error_count    : integer := 0;
   begin
         -- code executes for every event on sensitivity list
     MODE_i <= '0'; -- left shifting
-    for i in test_vectors'range loop
-      SH_IN_i <= test_vectors(i);
+    for i in c_TEST_VECTORS'range loop
+      SH_IN_i <= c_TEST_VECTORS(i);
       wait for 10 ns;
-      expected := test_vectors(i)(14 downto 0) & test_vectors(i)(15 downto 15);
-      assert SH_OUT_o = expected
-      report "LEFT rotation failed: input=" & integer'image(to_integer(unsigned(SH_IN_i))) &
-      "; expected=" & integer'image(to_integer(unsigned(expected))) &
-      "; actual=" & integer'image(to_integer(unsigned(SH_OUT_o)))
-      severity error;
+      expected := c_TEST_VECTORS(i)(14 downto 0) & c_TEST_VECTORS(i)(15 downto 15);
+      if SH_OUT_o /= expected then
+        assert false
+        report "LEFT rotation failed: input=" & integer'image(to_integer(unsigned(SH_IN_i))) &
+        "; expected=" & integer'image(to_integer(unsigned(expected))) &
+        "; actual=" & integer'image(to_integer(unsigned(SH_OUT_o)))
+        severity error;
+        error_count := error_count + 1;
+      end if;
     end loop;
-    report "Left shifting test finished.";
+    assert false report "Left shifting test finished." severity note;
     MODE_i <= '1'; -- right shifting
-    for i in test_vectors'range loop
-      SH_IN_i <= test_vectors(i);
+    for i in c_TEST_VECTORS'range loop
+      SH_IN_i <= c_TEST_VECTORS(i);
       wait for 10 ns;
-      expected := test_vectors(i)(0 downto 0) & test_vectors(i)(15 downto 1);
-      assert SH_OUT_o = expected
-      report "RIGHT rotation failed: input=" & integer'image(to_integer(unsigned(SH_IN_i))) &
-      "; expected=" & integer'image(to_integer(unsigned(expected))) &
-      "; actual=" & integer'image(to_integer(unsigned(SH_OUT_o)))
-      severity error;
+      expected := c_TEST_VECTORS(i)(0 downto 0) & c_TEST_VECTORS(i)(15 downto 1);
+      if SH_OUT_o /= expected then
+        assert false
+        report "RIGHT rotation failed: input=" & integer'image(to_integer(unsigned(SH_IN_i)))
+        & "; expected=" & integer'image(to_integer(unsigned(expected))) &
+        "; actual=" & integer'image(to_integer(unsigned(SH_OUT_o)))
+        severity error;
+        error_count := error_count + 1;
+      end if;
     end loop;
-    report "Right shifting test finished.";
+    assert false report "Right shifting test finished." severity note;
     wait for 10 ns;
-    report "Test completed.";
+    if error_count = 0 then
+      assert false report "Test completed." severity note;
+    else
+      assert false report "Test finshed with errors." severity error;
+    end if;
     wait;
   end process always;
-end dual_mode_shifter_arch;
+end arch;
