@@ -36,7 +36,6 @@
 -- ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 -- OTHER DEALINGS IN THE SOFTWARE
 -----------------------------------------------------------------------------
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -53,15 +52,17 @@ end eight_bit_divider;
 architecture arch of eight_bit_divider is
 begin
   main_p : process (A_i, B_i)
-    variable A, B, Q, R : unsigned(7 downto 0);
-    variable i          : integer;
+    variable A, B : unsigned(7 downto 0);
+    variable Q, R : unsigned(7 downto 0);
+    variable i    : integer;
   begin
     A := unsigned(A_i);
     B := unsigned(B_i);
 
     if B = to_unsigned(0, 8) then
-      Q_o <= (others => '0');
-      R_o <= A_i;
+      Q_o <= (others => '1');
+      R_o <= (others => '1');
+
     else
       Q := (others => '0');
       R := (others => '0');

@@ -90,6 +90,7 @@ begin
 
     assert (Q_o = std_logic_vector(to_unsigned(Q_exp, 8)) and
             R_o = std_logic_vector(to_unsigned(R_exp, 8)))
+      report "Test 1 failed: 100 / 7"
       severity error;
 
     -- 2) 25 / 5
@@ -104,6 +105,7 @@ begin
 
     assert (Q_o = std_logic_vector(to_unsigned(Q_exp, 8)) and
             R_o = std_logic_vector(to_unsigned(R_exp, 8)))
+      report "Test 2 failed: 25 / 5"
       severity error;
 
     -- 3) 5 / 15
@@ -118,6 +120,7 @@ begin
 
     assert (Q_o = std_logic_vector(to_unsigned(Q_exp, 8)) and
             R_o = std_logic_vector(to_unsigned(R_exp, 8)))
+      report "Test 3 failed: 5 / 15"
       severity error;
 
     -- 4) 15 / 0 (division by zero)
@@ -127,9 +130,12 @@ begin
     B_i   <= std_logic_vector(to_unsigned(B_int, 8));
     wait for 100 ns;
 
-    -- expected: Q_o = 0, R_o = A_i (according to divider implementation)
-    assert (Q_o = std_logic_vector(to_unsigned(0, 8)) and
-            R_o = std_logic_vector(to_unsigned(A_int, 8)))
+    Q_exp := 255;
+    R_exp := 255;
+
+    assert (Q_o = std_logic_vector(to_unsigned(Q_exp, 8)) and
+            R_o = std_logic_vector(to_unsigned(R_exp, 8)))
+      report "Test 4 failed: 15 / 0 (division by zero)"
       severity error;
 
     wait;
