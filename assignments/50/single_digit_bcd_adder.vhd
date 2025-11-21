@@ -41,27 +41,27 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity single_digit_bcd_adder is
-   port (
-   A_i   : in std_logic_vector(3 downto 0);
-   B_i   : in std_logic_vector(3 downto 0);
-   CARRY_i : in std_logic;
-   SUM_o : out std_logic_vector(3 downto 0);
-   CARRY_o : out std_logic
+  port (
+  A_i   : in std_logic_vector(3 downto 0);
+  B_i   : in std_logic_vector(3 downto 0);
+  CARRY_i : in std_logic;
+  SUM_o : out std_logic_vector(3 downto 0);
+  CARRY_o : out std_logic
 );
 end single_digit_bcd_adder;
 
 architecture single_digit_bcd_adder_arch of single_digit_bcd_adder is
 begin
 process(A_i, B_i, CARRY_i)
-   variable temp : unsigned(4 downto 0);
+  variable temp : unsigned(4 downto 0);
 begin
-   temp := unsigned('0'&A_i) + unsigned('0'&B_i) + ("0000"&CARRY_i);
-   if(temp > 9) then
-      CARRY_o <= '1';
-      SUM_o <= std_logic_vector(resize((temp + "00110"),4));
-   else
-      CARRY_o <= '0';
-      SUM_o <= std_logic_vector(resize(temp, 4));
-   end if;
+  temp := unsigned('0'&A_i) + unsigned('0'&B_i) + ("0000"&CARRY_i);
+  if(temp > 9) then
+    CARRY_o <= '1';
+    SUM_o <= std_logic_vector(resize((temp + "00110"),4));
+  else
+    CARRY_o <= '0';
+    SUM_o <= std_logic_vector(resize(temp, 4));
+  end if;
 end process;
 end architecture;

@@ -41,51 +41,51 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity bcd_adder is
-   port (
-   A_i   : in  std_logic_vector(11 downto 0);
-   B_i   : in  std_logic_vector(11 downto 0);
-   SUM_o : out std_logic_vector(15 downto 0)
-);
+  port (
+    A_i   : in  std_logic_vector(11 downto 0);
+    B_i   : in  std_logic_vector(11 downto 0);
+    SUM_o : out std_logic_vector(15 downto 0)
+  );
 end bcd_adder;
 
 architecture bcd_adder_arch of bcd_adder is
-   component single_digit_bcd_adder is
-   port(
+  component single_digit_bcd_adder is
+    port(
       A_i   : in  std_logic_vector(3 downto 0);
       B_i   : in  std_logic_vector(3 downto 0);
       CARRY_i : in std_logic;
       SUM_o : out std_logic_vector(3 downto 0);
       CARRY_o : out std_logic
-   );
-   end component;
-   signal s_carry_out : std_logic_vector(3 downto 0) := "0000";
+    );
+  end component;
+  signal s_carry_out : std_logic_vector(3 downto 0) := "0000";
 begin
-   a0 : single_digit_bcd_adder port map(
-      A_i => A_i(3 downto 0),
-      B_i => B_i(3 downto 0),
-      CARRY_i => '0',
-      SUM_o => SUM_o(3 downto 0),
-      CARRY_o => s_carry_out(0)
-   );
-   a1 : single_digit_bcd_adder port map(
-      A_i => A_i(7 downto 4),
-      B_i => B_i(7 downto 4),
-      CARRY_i => s_carry_out(0),
-      SUM_o => SUM_o(7 downto 4),
-      CARRY_o => s_carry_out(1)
-   );
-   a2 : single_digit_bcd_adder port map(
-      A_i => A_i(11 downto 8),
-      B_i => B_i(11 downto 8),
-      CARRY_i => s_carry_out(1),
-      SUM_o => SUM_o(11 downto 8),
-      CARRY_o => s_carry_out(2)
-   );
-   a3 : single_digit_bcd_adder port map(
-      A_i => "0000",
-      B_i => "0000",
-      CARRY_i => s_carry_out(2),
-      SUM_o => SUM_o(15 downto 12),
-      CARRY_o => s_carry_out(3)
-   );
-end architecture;
+  a0 : single_digit_bcd_adder port map(
+    A_i     => A_i(3 downto 0),
+    B_i     => B_i(3 downto 0),
+    CARRY_i => '0',
+    SUM_o   => SUM_o(3 downto 0),
+    CARRY_o => s_carry_out(0)
+  );
+  a1 : single_digit_bcd_adder port map(
+    A_i     => A_i(7 downto 4),
+    B_i     => B_i(7 downto 4),
+    CARRY_i => s_carry_out(0),
+    SUM_o   => SUM_o(7 downto 4),
+    CARRY_o => s_carry_out(1)
+  );
+  a2 : single_digit_bcd_adder port map(
+    A_i     => A_i(11 downto 8),
+    B_i     => B_i(11 downto 8),
+    CARRY_i => s_carry_out(1),
+    SUM_o   => SUM_o(11 downto 8),
+    CARRY_o => s_carry_out(2)
+  );
+  a3 : single_digit_bcd_adder port map(
+    A_i     => "0000",
+    B_i     => "0000",
+    CARRY_i => s_carry_out(2),
+    SUM_o   => SUM_o(15 downto 12),
+    CARRY_o => s_carry_out(3)
+  );
+end bcd_adder_arch architecture;
