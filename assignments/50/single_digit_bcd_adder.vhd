@@ -42,9 +42,9 @@ use ieee.numeric_std.all;
 
 entity single_digit_bcd_adder is
   port (
-    A_i      : in std_logic_vector(3 downto 0);
-    B_i      : in std_logic_vector(3 downto 0);
-    CARRY_i  : in std_logic;
+    A_i      : in  std_logic_vector(3 downto 0);
+    B_i      : in  std_logic_vector(3 downto 0);
+    CARRY_i  : in  std_logic;
     SUM_o    : out std_logic_vector(3 downto 0);
     CARRY_o  : out std_logic
   );
