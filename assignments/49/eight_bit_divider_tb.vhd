@@ -47,6 +47,15 @@ end eight_bit_divider_tb;
 
 architecture arch of eight_bit_divider_tb is
 
+  component eight_bit_divider is
+    port (
+      A_i : in  std_logic_vector(7 downto 0);
+      B_i : in  std_logic_vector(7 downto 0);
+      Q_o : out std_logic_vector(7 downto 0);
+      R_o : out std_logic_vector(7 downto 0)
+    );
+  end component;
+
   signal A_i : std_logic_vector(7 downto 0);
   signal B_i : std_logic_vector(7 downto 0);
   signal Q_o : std_logic_vector(7 downto 0);
@@ -54,8 +63,7 @@ architecture arch of eight_bit_divider_tb is
 
 begin
 
-
-  uut : entity work.eight_bit_divider
+  uut : eight_bit_divider
     port map (
       A_i => A_i,
       B_i => B_i,
@@ -112,13 +120,14 @@ begin
             R_o = std_logic_vector(to_unsigned(R_exp, 8)))
       severity error;
 
-    -- 4) 15 / 0  (dijeljenje sa nulom)
+    -- 4) 15 / 0 (division by zero)
     A_int := 15;
     B_int := 0;
     A_i   <= std_logic_vector(to_unsigned(A_int, 8));
     B_i   <= std_logic_vector(to_unsigned(B_int, 8));
     wait for 100 ns;
 
+    -- expected: Q_o = 0, R_o = A_i (according to divider implementation)
     assert (Q_o = std_logic_vector(to_unsigned(0, 8)) and
             R_o = std_logic_vector(to_unsigned(A_int, 8)))
       severity error;
