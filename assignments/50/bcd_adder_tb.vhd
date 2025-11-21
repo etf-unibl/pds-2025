@@ -151,14 +151,14 @@ begin
       end if;
     end loop;
     wait for 10 ns;
-    assert false report "--- FINISHED TESTING ---";
-    assert false report "Total tests: " & integer'image(total_tests);
-    assert false report "Failed tests: " & integer'image(error_count);
+    assert false report "--- FINISHED TESTING ---" severity note;
+    assert false report "Total tests: " & integer'image(total_tests) severity note;
+    assert false report "Failed tests: " & integer'image(error_count) severity note;
 
     if error_count = 0 then
-      assert false report "--- TEST PASSED ---";
+      assert false report "--- TEST PASSED ---" severity note;
     else
-      assert false report "--- TEST FAILED ---";
+      assert false report "--- TEST FAILED ---" severity note;
     end if;
     wait;
   end process tb;
