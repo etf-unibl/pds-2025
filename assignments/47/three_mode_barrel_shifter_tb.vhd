@@ -63,7 +63,7 @@ begin
   );
   stim_proc : process
   begin
-    A_i_tb <= "10000001"; 
+    A_i_tb <= "10000001";
     LAR_i_tb <= "00";
     AMT_i_tb <= "000";
     wait for 200 ns;
