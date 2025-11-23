@@ -9,7 +9,7 @@
 -- description:   Self-checking testbench for eight_bit_divider
 --
 --   This file implements a simple self-checking testbench that applies
---   several test vectors to the eight_bit_divider and checks quotient
+--   test vectors to the eight_bit_divider and checks quotient
 --   and remainder against expected values.
 --
 -----------------------------------------------------------------------------
@@ -56,8 +56,8 @@ architecture arch of eight_bit_divider_tb is
     );
   end component;
 
-  signal A_i : std_logic_vector(7 downto 0);
-  signal B_i : std_logic_vector(7 downto 0);
+  signal A_i : std_logic_vector(7 downto 0) := (others => '0');
+  signal B_i : std_logic_vector(7 downto 0) := (others => '0');
   signal Q_o : std_logic_vector(7 downto 0);
   signal R_o : std_logic_vector(7 downto 0);
 
@@ -77,66 +77,29 @@ begin
     variable Q_exp : integer;
     variable R_exp : integer;
   begin
-    -- 1) 100 / 7
     wait for 1 ns;
-    A_int := 100;
-    B_int := 7;
-    A_i   <= std_logic_vector(to_unsigned(A_int, 8));
-    B_i   <= std_logic_vector(to_unsigned(B_int, 8));
-    wait for 100 ns;
 
-    Q_exp := A_int / B_int;
-    R_exp := A_int mod B_int;
+    -- sve kombinacije A=0..255, B=0..255
+    for A_int in 0 to 255 loop
+      for B_int in 0 to 255 loop
+        A_i <= std_logic_vector(to_unsigned(A_int, 8));
+        B_i <= std_logic_vector(to_unsigned(B_int, 8));
+        wait for 100 ns;
 
-    assert (Q_o = std_logic_vector(to_unsigned(Q_exp, 8)) and
-            R_o = std_logic_vector(to_unsigned(R_exp, 8)))
-      report "Test 1 failed: 100 / 7"
-      severity error;
+        if B_int = 0 then
+          Q_exp := 255;
+          R_exp := 255;
+        else
+          Q_exp := A_int / B_int;
+          R_exp := A_int mod B_int;
+        end if;
 
-    -- 2) 25 / 5
-    A_int := 25;
-    B_int := 5;
-    A_i   <= std_logic_vector(to_unsigned(A_int, 8));
-    B_i   <= std_logic_vector(to_unsigned(B_int, 8));
-    wait for 100 ns;
-
-    Q_exp := A_int / B_int;
-    R_exp := A_int mod B_int;
-
-    assert (Q_o = std_logic_vector(to_unsigned(Q_exp, 8)) and
-            R_o = std_logic_vector(to_unsigned(R_exp, 8)))
-      report "Test 2 failed: 25 / 5"
-      severity error;
-
-    -- 3) 5 / 15
-    A_int := 5;
-    B_int := 15;
-    A_i   <= std_logic_vector(to_unsigned(A_int, 8));
-    B_i   <= std_logic_vector(to_unsigned(B_int, 8));
-    wait for 100 ns;
-
-    Q_exp := A_int / B_int;
-    R_exp := A_int mod B_int;
-
-    assert (Q_o = std_logic_vector(to_unsigned(Q_exp, 8)) and
-            R_o = std_logic_vector(to_unsigned(R_exp, 8)))
-      report "Test 3 failed: 5 / 15"
-      severity error;
-
-    -- 4) 15 / 0 (division by zero)
-    A_int := 15;
-    B_int := 0;
-    A_i   <= std_logic_vector(to_unsigned(A_int, 8));
-    B_i   <= std_logic_vector(to_unsigned(B_int, 8));
-    wait for 100 ns;
-
-    Q_exp := 255;
-    R_exp := 255;
-
-    assert (Q_o = std_logic_vector(to_unsigned(Q_exp, 8)) and
-            R_o = std_logic_vector(to_unsigned(R_exp, 8)))
-      report "Test 4 failed: 15 / 0 (division by zero)"
-      severity error;
+        assert (Q_o = std_logic_vector(to_unsigned(Q_exp, 8)) and
+                R_o = std_logic_vector(to_unsigned(R_exp, 8)))
+          report "Test failed"
+          severity error;
+      end loop;
+    end loop;
 
     wait;
   end process stim_p;
