@@ -53,8 +53,9 @@ end dual_edge_detector;
 architecture arch of dual_edge_detector is
   type mc_sm_type is
     (zero, edge, one);
+  attribute enum_encoding : string;
+  attribute enum_encoding of mc_sm_type : type is "00 01 10";
   signal state_reg, state_next : mc_sm_type;
-
 begin
   --! state register
   process(clk_i, rst_i)
