@@ -74,17 +74,17 @@ architecture arch of dual_edge_detector is
   signal state_reg, state_next : t_mc_sm_type;
 begin
   --! state register
-  process(clk_i, rst_i)
+  state : process(clk_i, rst_i)
   begin
-    if rst_i = '1'  then
+    if rst_i = '1' then
       state_reg <= zero;
     elsif rising_edge(clk_i) then
       state_reg <= state_next;
     end if;
-  end process;
+  end process state;
 
   --! next-state logic
-  process(state_reg, strobe_i)
+  next_state : process(state_reg, strobe_i)
   begin
     case state_reg is
       when zero =>
@@ -106,10 +106,10 @@ begin
           state_next <= zero;
         end if;
     end case;
-  end process;
+  end process next_state;
 
   --! Output logic
-  process(state_reg)
+  output : process(state_reg)
   begin
     case state_reg is
       when zero =>
@@ -119,5 +119,5 @@ begin
       when edge =>
         p_o <= '1';
     end case;
-  end process;
+  end process output;
 end arch;

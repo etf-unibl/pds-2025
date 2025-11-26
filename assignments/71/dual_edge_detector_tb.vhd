@@ -85,7 +85,7 @@ begin
     wait for 10 ns;
     clk_s <= '1';
     wait for 10 ns;
-  end process;
+  end process clk;
 
   stimuli : process
   begin
@@ -140,5 +140,5 @@ begin
       end if;
       wait;
     end if;
-  end process;
+  end process verifier;
 end arch;
