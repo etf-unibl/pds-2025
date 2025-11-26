@@ -38,42 +38,42 @@
 -----------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------
--- ! @file dual_edge_detector.vhd
--- ! @brief implements detector of both edges, meaning changes 0->1 and 1->0
+--! @file dual_edge_detector.vhd
+--! @brief implements detector of both edges, meaning changes 0->1 and 1->0
 -----------------------------------------------------------------------------
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
--- ! @brief Entity definition of dual_edge_detector.
--- ! Unit implements edge detector that i syncrhonous with the clock.
--- ! Whenever input(strobe_i) changes it's state, either from 0 to 1, or
--- ! 1 to 0, the output(p_o) should be high indicating that an edge has been
--- ! detected. Output(p_o) is low otherwise.
+--! @brief Entity definition of dual_edge_detector.
+--! Unit implements edge detector that i syncrhonous with the clock.
+--! Whenever input(strobe_i) changes it's state, either from 0 to 1, or
+--! 1 to 0, the output(p_o) should be high indicating that an edge has been
+--! detected. Output(p_o) is low otherwise.
 entity dual_edge_detector is
   port (
-    clk_i    : in  std_logic; -- ! Clock input of the unit.
-    rst_i    : in  std_logic; -- ! Reset input of the unit.
-    strobe_i : in  std_logic; -- ! The input we are trying to detect edges from.
-    p_o      : out std_logic  -- ! Output which signals that an edge is detected.
+    clk_i    : in  std_logic; --! Clock input of the unit.
+    rst_i    : in  std_logic; --! Reset input of the unit.
+    strobe_i : in  std_logic; --! The input we are trying to detect edges from.
+    p_o      : out std_logic  --! Output which signals that an edge is detected.
 );
 end dual_edge_detector;
 
--- ! @brief Architecture definition of dual_edge_detector.
--- ! This architecture uses Moore's finite state machine.
--- ! States of the machine are: zero, edge and one.
--- ! state zero is entered in when strobe_i has value of '0' and current state is either zero or edge.
--- ! state one is entered in when strobe_i has value of '1' and current state is either one or edge.
--- ! state edge is entered in when strobe_i the current state is one and the value '0' or when state is zero and the value is '1'
--- ! During the edge state output is high, meaning an edge is detected, otherwise it's low.
+--! @brief Architecture definition of dual_edge_detector.
+--! This architecture uses Moore's finite state machine.
+--! States of the machine are: zero, edge and one.
+--! state zero is entered in when strobe_i has value of '0' and current state is either zero or edge.
+--! state one is entered in when strobe_i has value of '1' and current state is either one or edge.
+--! state edge is entered in when strobe_i the current state is one and the value '0' or when state is zero and the value is '1'
+--! During the edge state output is high, meaning an edge is detected, otherwise it's low.
 architecture arch of dual_edge_detector is
 
   type t_mc_sm_type is
     (zero, edge, one);
   signal state_reg, state_next : t_mc_sm_type;
 begin
-  -- ! state register
+  --! state register
   state : process(clk_i, rst_i)
   begin
     if rst_i = '1' then
@@ -83,7 +83,7 @@ begin
     end if;
   end process state;
 
-  -- ! next-state logic
+  --! next-state logic
   next_state : process(state_reg, strobe_i)
   begin
     case state_reg is
@@ -108,7 +108,7 @@ begin
     end case;
   end process next_state;
 
-  -- ! Output logic
+  --! Output logic
   output : process(state_reg)
   begin
     case state_reg is
