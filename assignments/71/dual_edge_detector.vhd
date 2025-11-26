@@ -50,7 +50,7 @@ entity dual_edge_detector is
 );
 end dual_edge_detector;
 
-architecture arch of bcd_adder is
+architecture arch of dual_edge_detector is
   type mc_sm_type is
     (zero, edge, one);
   signal state_reg, state_next : mc_sm_type;
@@ -64,7 +64,7 @@ begin
     elsif rising_edge(clk_i) then
       state_reg <= state_next;
     end if;
-  end process
+  end process;
 
   --! next-state logic
   process(state_reg, strobe_i)
@@ -76,15 +76,15 @@ begin
         else
           state_next <= zero;
         end if;
-      when edge =>
-        if strobe_i = '1' then
-          state_next <= one;
-        else
-          state_next <= zero;
-        end if;
       when one =>
         if strobe_i = '0' then
           state_next <= edge;
+        else
+          state_next <= one;
+        end if;
+      when edge =>
+        if strobe_i = '1' then
+          state_next <= one;
         else
           state_next <= zero;
         end if;
@@ -94,10 +94,11 @@ begin
   --! Output logic
   process(state_reg)
   begin
-    p_o <= '0';
     case state_reg is
       when zero =>
+        p_o <= '0';
       when one =>
+        p_o <= '0';
       when edge =>
         p_o <= '1';
     end case;
