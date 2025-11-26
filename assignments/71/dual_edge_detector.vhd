@@ -53,10 +53,10 @@ use ieee.numeric_std.all;
 -- ! detected. Output(p_o) is low otherwise.
 entity dual_edge_detector is
   port (
-    clk_i    : in  std_logic; --! Clock input of the unit.
-    rst_i    : in  std_logic; --! Reset input of the unit.
-    strobe_i : in  std_logic; --! The input we are trying to detect edges from.
-    p_o      : out std_logic  --! Output which signals that an edge is detected.
+    clk_i    : in  std_logic; -- ! Clock input of the unit.
+    rst_i    : in  std_logic; -- ! Reset input of the unit.
+    strobe_i : in  std_logic; -- ! The input we are trying to detect edges from.
+    p_o      : out std_logic  -- ! Output which signals that an edge is detected.
 );
 end dual_edge_detector;
 
