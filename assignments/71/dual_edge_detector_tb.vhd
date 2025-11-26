@@ -36,13 +36,24 @@
 -- OTHER DEALINGS IN THE SOFTWARE
 -----------------------------------------------------------------------------
 
+-----------------------------------------------------------------------------
+--! @file dual_edge_detector_tb.vhd
+--! @brief implements test bench for dual_edge_detector
+-----------------------------------------------------------------------------
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+--! @brief Empty entity for testbench
 entity dual_edge_detector_tb is
 end dual_edge_detector_tb;
 
+--! @brief Architecture of dual_edge_detector test bench
+--! Implements self-checking test bench.
+--! Inside stimuli process there are 9 tests.
+--! Process verifier check for results and stores number of tests
+--! and number of failed results.
 architecture arch of dual_edge_detector_tb is
   component dual_edge_detector is
     port (
@@ -125,7 +136,7 @@ begin
       if error_count = 0 then
         assert false report "--- TEST PASSED ---" severity note;
       else
-        assert false report "--- TEST FAILED ---" severity note;
+        assert false report "--- TEST FAILED ---" severity error;
       end if;
       wait;
     end if;
