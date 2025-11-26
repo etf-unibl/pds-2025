@@ -76,12 +76,9 @@ begin
     wait for 10 ns;
   end process;
 
-  tb : process
-    variable error_count : integer := 0;
-    variable total_tests : integer := 0;
-    variable expected    : std_logic;
+  stimuli : process
   begin
-    strobe_s <= '0';
+    rst_s <= '0';
     wait for 40 ns;
     strobe_s <= '1';
     wait for 50 ns;
@@ -95,55 +92,42 @@ begin
     wait for 144 ns;
     strobe_s <= '0';
     wait for 190 ns;
-    strobe_s <= '0';
-    wait for 150 ns;
     strobe_s <= '1';
-    wait for 189 ns;
+    wait for 150 ns;
     strobe_s <= '0';
+    wait for 189 ns;
+    strobe_s <= '1';
 
     flag <= '1';
     wait;
-    -- assert false report "--- TESTING ---" severity note;
-    -- for i in c_A'range loop
-    --   total_tests := total_tests + 1;
-    --   s_A <= c_A(i);
-    --   s_B <= c_B(i);
-    --   wait for 10 ns;
-    --   expected := c_SUM(i);
+  end process stimuli;
 
-    --   if s_SUM /= expected  then
-    --     assert false report "Adding failed: inputs="
-    --       & integer'image(to_integer(unsigned(s_A(11 downto 8))))
-    --       & integer'image(to_integer(unsigned(s_A(7 downto 4))))
-    --       & integer'image(to_integer(unsigned(s_A(3 downto 0))))
-    --       & " and "
-    --       & integer'image(to_integer(unsigned(s_B(11 downto 8))))
-    --       & integer'image(to_integer(unsigned(s_B(7 downto 4))))
-    --       & integer'image(to_integer(unsigned(s_B(3 downto 0))))
-    --       & "; expected ="
-    --       & integer'image(to_integer(unsigned(expected(15 downto 12))))
-    --       & integer'image(to_integer(unsigned(expected(11 downto 8))))
-    --       & integer'image(to_integer(unsigned(expected(7 downto 4))))
-    --       & integer'image(to_integer(unsigned(expected(3 downto 0))))
-    --       & "; actual="
-    --       & integer'image(to_integer(unsigned(s_SUM(15 downto 12))))
-    --       & integer'image(to_integer(unsigned(s_SUM(11 downto 8))))
-    --       & integer'image(to_integer(unsigned(s_SUM(7 downto 4))))
-    --       & integer'image(to_integer(unsigned(s_SUM(3 downto 0))))
-    --     severity error;
-    --     error_count := error_count + 1;
-    --   end if;
-    -- end loop;
-    -- wait for 10 ns;
-    -- assert false report "--- FINISHED TESTING ---" severity note;
-    -- assert false report "Total tests: " & integer'image(total_tests) severity note;
-    -- assert false report "Failed tests: " & integer'image(error_count) severity note;
+  verifier : process
+    variable error_count : integer := 0;
+    variable total_tests : integer := 0;
+    variable expected    : std_logic;
+  begin
+    if total_tests = 0 then
+      assert false report "--- TESTING ---" severity note;
+    end if;
 
-    -- if error_count = 0 then
-    --   assert false report "--- TEST PASSED ---" severity note;
-    -- else
-    --   assert false report "--- TEST FAILED ---" severity note;
-    -- end if;
-    -- wait;
-  end process tb;
+    wait on strobe_s;
+    total_tests := total_tests + 1;
+    wait for 25 ns; -- Wait for output to to get activated
+    if p_s = '0' then -- Output should always be high on strobe_i changes
+      error_count := error_count + 1;
+    end if;
+    if flag = '1' then
+      assert false report "--- FINISHED TESTING ---" severity note;
+      assert false report "Total tests: " & integer'image(total_tests) severity note;
+      assert false report "Failed tests: " & integer'image(error_count) severity note;
+
+      if error_count = 0 then
+        assert false report "--- TEST PASSED ---" severity note;
+      else
+        assert false report "--- TEST FAILED ---" severity note;
+      end if;
+      wait;
+    end if;
+  end process;
 end arch;
