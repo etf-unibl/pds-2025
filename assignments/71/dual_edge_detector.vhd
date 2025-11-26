@@ -67,15 +67,11 @@ end dual_edge_detector;
 --! state one is entered in when strobe_i has value of '1' and current state is either one or edge.
 --! state edge is entered in when strobe_i the current state is one and the value '0' or when state is zero and the value is '1'
 --! During the edge state output is high, meaning an edge is detected, otherwise it's low.
---! States of the machine have been coded with almost one-shot coding achieving
---! more efficient solution which uses two registers instead of three.
 architecture arch of dual_edge_detector is
 
-  type mc_sm_type is
+  type t_mc_sm_type is
     (zero, edge, one);
-  attribute enum_encoding : string;
-  attribute enum_encoding of mc_sm_type : type is "00 01 10";
-  signal state_reg, state_next : mc_sm_type;
+  signal state_reg, state_next : t_mc_sm_type;
 begin
   --! state register
   process(clk_i, rst_i)
