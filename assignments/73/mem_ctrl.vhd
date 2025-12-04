@@ -67,7 +67,7 @@ end mem_ctrl;
 --! @brief Architecture implementing the memory controller logic.
 architecture arch of mem_ctrl is
   --! Type that represents possible states of memory controller (based on FSM).
-  type t_mc_sm_type is (idle, read1, read2, read3, read4, write);
+  type t_mc_sm_type is (idle, read1, read_burst_1, read2 ,read3, read4, write);
   --! @brief Registers for current and next states of the FSM.
   signal state_reg, state_next : t_mc_sm_type;
 begin
@@ -90,7 +90,7 @@ begin
             if burst_i = '0' then
               state_next <= read1; --! Single read operation.
             else
-              state_next <= read2; --! Burst read operation.
+              state_next <= read_burst_1; --! Burst read operation.
             end if;
           else
             state_next <= write;
@@ -102,6 +102,8 @@ begin
         state_next <= idle;
       when read1 =>
         state_next <= idle;
+      when read_burst_1 =>
+        state_next <= read2;
       when read2 =>
         state_next <= read3;
       when read3 =>
@@ -121,6 +123,8 @@ begin
       when write =>
         we_o <= '1';
       when read1 =>
+        oe_o <= '1';
+      when read_burst_1 =>
         oe_o <= '1';
       when read2 =>
         oe_o <= '1';
@@ -142,6 +146,7 @@ begin
         end if;
       when write =>
       when read1 =>
+      when read_burst_1 =>
       when read2 =>
       when read3 =>
       when read4 =>
