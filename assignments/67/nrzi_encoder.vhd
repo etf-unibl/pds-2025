@@ -39,30 +39,32 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
- -- ! @file nrzi_encoder.vhd
- -- ! @brief NRZI (Non-Return-to-Zero Inverted) encoder
- -- ! @details Implements a Moore FSM NRZI encoder. Output changes only on input '1'.
- -- ! The encoder has two states (S0, S1) representing the current output logic level.
+ --! @file nrzi_encoder.vhd
+ --! @brief NRZI (Non-Return-to-Zero Inverted) encoder
+ --! @details Implements a Moore FSM NRZI encoder. Output changes only on input '1'.
+ --! The encoder has two states (S0, S1) representing the current output logic level.
 
 entity nrzi_encoder is
   port (
-    clk_i  : in  std_logic;  -- ! Input clock signal
-    rst_i  : in  std_logic;  -- ! Active-high synchronous reset
-    data_i : in  std_logic;  -- ! Input data signal
-    data_o : out std_logic   -- ! NRZI encoded output
+    clk_i  : in  std_logic;  --! Input clock signal
+    rst_i  : in  std_logic;  --! Active-high synchronous reset
+    data_i : in  std_logic;  --! Input data signal
+    data_o : out std_logic   --! NRZI encoded output
   );
 end nrzi_encoder;
 
+--! @brief Architecture arch for NRZI encoder
+--! @details Includes next-state logic, output logic, and state register updates
 architecture arch of nrzi_encoder is
-  -- ! @brief Internal signal declarations
-  type t_state is (S0, S1);               -- ! @brief FSM states
-  signal state_reg, state_next : t_state; -- ! @brief Current and next state signals of Moore machine
-  signal data_o_next : std_logic;         -- ! @brief Next output value
+  --! @brief Internal signal declarations
+  type t_state is (S0, S1);               --! @brief FSM states
+  signal state_reg, state_next : t_state; --! @brief Current and next state signals of Moore machine
+  signal data_o_next : std_logic;         --! @brief Next output value
 
 begin
 
-  -- ! @brief Next-state logic
-  -- ! @details Determines the next FSM state based on current state and input
+  --! @brief Next-state logic
+  --! @details Determines the next FSM state based on current state and input
   process(state_reg, data_i)
   begin
     case state_reg is
@@ -81,8 +83,8 @@ begin
     end case;
   end process;
 
-  -- ! @brief Moore output logic
-  -- ! @details Output is a function of next state (look-ahead Moore)
+  --! @brief Moore output logic
+  --! @details Output is a function of next state (look-ahead Moore)
   process(state_next)
   begin
     case state_next is
@@ -91,8 +93,8 @@ begin
     end case;
   end process;
 
-  -- ! @brief State register and output update
-  -- ! @details Registers are updated on rising clock edge or reset
+  --! @brief State register and output update
+  --! @details Registers are updated on rising clock edge or reset
   process(clk_i, rst_i)
   begin
     if rst_i = '1' then

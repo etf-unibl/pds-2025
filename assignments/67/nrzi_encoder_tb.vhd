@@ -39,52 +39,52 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
--- ! @file nrzi_encoder_tb.vhd
--- ! @brief Testbench for NRZI encoder
--- ! @details This testbench applies multiple input sequences to the NRZI encoder
--- !          and compares the output with expected NRZI encoded values.
+--! @file nrzi_encoder_tb.vhd
+--! @brief Testbench for NRZI encoder
+--! @details This testbench applies multiple input sequences to the NRZI encoder
+--!          and compares the output with expected NRZI encoded values.
 
--- ! @brief Testbench entity for NRZI encoder
+--! @brief Testbench entity for NRZI encoder
 entity nrzi_encoder_tb is
 end nrzi_encoder_tb;
 
--- ! @brief Testbench architecture
--- ! @details Generates clock, applies input sequences, checks output, and reports errors.
+--! @brief Testbench architecture
+--! @details Generates clock, applies input sequences, checks output, and reports errors.
 architecture arch of nrzi_encoder_tb is
 
-  -- ! @brief NRZI encoder component declaration
+  --! @brief NRZI encoder component declaration
   component nrzi_encoder
     port (
-      clk_i  : in  std_logic; -- ! Input clock
-      rst_i  : in  std_logic; -- ! Active-high reset
-      data_i : in  std_logic; -- ! Input data to encode
-      data_o : out std_logic  -- ! NRZI encoded output
+      clk_i  : in  std_logic; --! Input clock
+      rst_i  : in  std_logic; --! Active-high reset
+      data_i : in  std_logic; --! Input data to encode
+      data_o : out std_logic  --! NRZI encoded output
     );
   end component;
 
-  -- ! @brief Testbench signals
-  signal clk_i  : std_logic    := '0'; -- ! Clock signal
-  signal rst_i  : std_logic    := '0'; -- ! Reset signal
-  signal data_i : std_logic    := '0'; -- ! Input data signal
-  signal data_o : std_logic;           -- ! Output from NRZI encoder
-  signal test_stop : std_logic := '0'; -- ! Test stop signal
+  --! @brief Testbench signals
+  signal clk_i  : std_logic    := '0'; --! Clock signal
+  signal rst_i  : std_logic    := '0'; --! Reset signal
+  signal data_i : std_logic    := '0'; --! Input data signal
+  signal data_o : std_logic;           --! Output from NRZI encoder
+  signal test_stop : std_logic := '0'; --! Test stop signal
 
-  -- ! @brief Clock period
+  --! @brief Clock period
   constant c_CLK_PERIOD : time := 10 ns;
 
-  -- ! @brief Type for a single input sequence
+  --! @brief Type for a single input sequence
   type t_data_array is array (0 to 3) of std_logic;
 
-  -- ! @brief Type for multiple sequences
+  --! @brief Type for multiple sequences
   type t_seq_array  is array (0 to 2) of t_data_array;
 
-  -- ! @brief Input sequences to test
+  --! @brief Input sequences to test
   constant c_INPUT_SEQUENCES  : t_seq_array := (
     ('1','0','1','0'),
     ('0','1','1','0'),
     ('1','1','0','1')
   );
-  -- ! @brief Expected output sequences to test
+  --! @brief Expected output sequences to test
   constant c_EXPECTED_OUTPUTS : t_seq_array := (
     ('1','1','0','0'),
     ('0','1','0','0'),
@@ -93,7 +93,7 @@ architecture arch of nrzi_encoder_tb is
 
 begin
 
-  -- ! @brief Instantiate the NRZI encoder
+  --! @brief Instantiate the NRZI encoder
   uut : nrzi_encoder
     port map(
       clk_i  => clk_i,
@@ -102,7 +102,7 @@ begin
       data_o => data_o
     );
 
-  -- ! @brief Clock generation process
+  --! @brief Clock generation process
   clk_process : process
   begin
     while test_stop = '0' loop
@@ -114,11 +114,11 @@ begin
     wait;
   end process clk_process;
 
-  -- ! @brief Test sequence application and checking process
-  -- ! @details Applies multiple input sequences to the NRZI encoder, compares
-  -- !          output with expected values, counts errors, and reports results.
+  --! @brief Test sequence application and checking process
+  --! @details Applies multiple input sequences to the NRZI encoder, compares
+  --!          output with expected values, counts errors, and reports results.
   tb : process
-    variable error_count : integer := 0; -- ! Counts number of errors detected
+    variable error_count : integer := 0; --! Counts number of errors detected
   begin
 
     rst_i <= '1';
