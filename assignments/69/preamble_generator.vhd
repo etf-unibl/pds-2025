@@ -69,7 +69,7 @@ end preamble_generator;
 architecture arch of preamble_generator is
   type t_mc_sm_type is
     (idle, state_00, state_10, state_01, state_02, state_03, state_11, state_12, state_13);
-  signal state_reg, state_next : mc_sm_type;
+  signal state_reg, state_next : t_mc_sm_type;
   signal buffered_data, buf_reg : std_logic;
 begin
   -- state register
