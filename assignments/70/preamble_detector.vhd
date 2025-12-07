@@ -78,6 +78,8 @@ architecture arch of preamble_detector is
   --! Registers holding the current and next FSM state.
   signal state_reg  : t_state;
   signal state_next : t_state;
+  signal match_int : std_logic;
+  signal match_reg : std_logic;
 
 begin
 
@@ -103,7 +105,7 @@ begin
   begin
     -- default values
     state_next <= state_reg;
-    match_o    <= '0';
+    match_int    <= '0';
 
     case state_reg is
 
@@ -159,12 +161,12 @@ begin
       when S7 =>
         if data_i = '0' then
           state_next <= S8;
+          match_int  <= '1';
         else
           state_next <= S1;
         end if;
 
       when S8 =>
-        match_o <= '1';
         if data_i = '1' then
           state_next <= S7;
         else
@@ -176,5 +178,14 @@ begin
 
     end case;
   end process next_state_logic;
+  output_reg : process (clk_i, rst_i)
+  begin
+    if rst_i = '1' then
+      match_reg <= '0';
+    elsif rising_edge(clk_i) then
+      match_reg <= match_int;
+    end if;
+  end process output_reg;
+  match_o <= match_reg;
 
 end arch;
