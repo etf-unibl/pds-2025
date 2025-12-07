@@ -72,26 +72,17 @@ architecture arch of preamble_generator is
   signal state_reg, state_next : t_mc_sm_type;
   signal buffered_data, buf_reg : std_logic;
 begin
-  -- state register
-  process(clk_i,rst_i)
-  begin
-    if rst_i = '1' then
-      state_reg <= idle;
-    elsif rising_edge(clk_i) then
-      state_reg <= state_next;
-    end if;
-  end process;
   --! state register
-  process(clk_i,rst_i)
+  state : process(clk_i,rst_i)
   begin
     if rst_i = '1' then
       buf_reg <= '0';
     elsif rising_edge(clk_i) then
       buf_reg <= buffered_data;
     end if;
-  end process;
+  end process state;
   --! next-state logic
-  process(state_reg,start_i)
+  next_state : process(state_reg,start_i)
   begin
     case state_reg is
       when idle =>
@@ -117,9 +108,9 @@ begin
       when state_03 =>
         state_next <= idle;
     end case;
-  end process;
+  end process next_state;
   --! Moore logic
-  process(state_reg)
+  moore : process(state_reg)
   begin
     buffered_data <= '0';
     case state_reg is
@@ -141,7 +132,7 @@ begin
       when state_03 =>
         buffered_data <= '0';
     end case;
-  end process;
+  end process moore;
   --! output logic
   data_o <= buf_reg;
 end arch;
