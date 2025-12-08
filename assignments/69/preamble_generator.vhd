@@ -91,7 +91,7 @@ begin
     end if;
   end process output_buffer;
   --! @brief next-state logic
-  next_state : process(state_reg,start_i)
+  next_state : process(state_reg, start_i)
   begin
     case state_reg is
       when idle =>
@@ -124,7 +124,6 @@ begin
     buffered_data <= '0';
     case state_next is
       when idle =>
-        buffered_data <= '0';
       when state_10 =>
         buffered_data <= '1';
       when state_00 =>
@@ -144,5 +143,5 @@ begin
     end case;
   end process look_ahead;
   --! @brief output logic
-  data_o <= buf_reg;
+  data_o <= buffered_data;
 end arch;
