@@ -46,24 +46,24 @@ use ieee.numeric_std.all;
 
 
 --! @brief Entity definition of preamble_generator.
---! Unit implements preamble_generator that is synchronous with the clock.
+--! @details Unit implements preamble_generator that is synchronous with the clock.
 --! Whenever start_i changes from low to high, the output will generate the following sequence
 --! in the next 8 cycles: 10101010
 --! When rst_i is invoked, the system asynchronously goes to the idle state
 entity preamble_generator is
   port (
-     clk_i   : in  std_logic; --! Clock input of the unit.
-     rst_i   : in  std_logic; --! Reset input of the unit.
-     start_i : in  std_logic; --! The input which starts the sequence generation.
-     data_o  : out std_logic  --! Single bit output which generates one symbol per clock cycle
+     clk_i   : in  std_logic; --! @brief Clock input of the unit.
+     rst_i   : in  std_logic; --! @brief Reset input of the unit.
+     start_i : in  std_logic; --! @brief The input which starts the sequence generation.
+     data_o  : out std_logic  --! @brief Single bit output which generates one symbol per clock cycle
   );
 end preamble_generator;
 --! @brief Look-ahead buffer architecture for the preamble_generator.
---! Implements a Moore-type finite state machine (FSM) that outputs an
+--! @details Implements a Moore-type finite state machine (FSM) that outputs an
 --! alternating 1/0 preamble sequence ("10101010"). The architecture uses:
---!  - A state register (state_reg)
---!  - A next-state FSM (state_next)
---!  - A one-cycle look-ahead output buffer (buf_reg)
+--! - A state register (state_reg)
+--! - A next-state FSM (state_next)
+--! - A one-cycle look-ahead output buffer (buf_reg)
 --! The FSM transitions through a fixed sequence of states once start_i is
 --! asserted. Each state corresponds to a specific output bit.
 architecture arch of preamble_generator is
@@ -72,7 +72,7 @@ architecture arch of preamble_generator is
   signal state_reg, state_next : t_mc_sm_type;
   signal buffered_data, buf_reg : std_logic;
 begin
-  --! state register
+  --! @brief state register
   state : process(clk_i,rst_i)
   begin
     if rst_i = '1' then
@@ -90,7 +90,7 @@ begin
       buf_reg <= buffered_data;
     end if;
   end process output_buffer;
-  --! next-state logic
+  --! @brief next-state logic
   next_state : process(state_reg,start_i)
   begin
     case state_reg is
@@ -118,12 +118,13 @@ begin
         state_next <= idle;
     end case;
   end process next_state;
-  --! Moore logic
-  moore : process(state_reg)
+  --! @brief Moore logic
+  moore : process(state_next)
   begin
     buffered_data <= '0';
-    case state_reg is
+    case state_next is
       when idle =>
+        buffered_data <= '0';
       when state_10 =>
         buffered_data <= '1';
       when state_00 =>
@@ -142,6 +143,6 @@ begin
         buffered_data <= '0';
     end case;
   end process moore;
-  --! output logic
+  --! @brief output logic
   data_o <= buf_reg;
 end arch;
