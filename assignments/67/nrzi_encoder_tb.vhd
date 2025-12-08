@@ -139,17 +139,17 @@ begin
           error_count := error_count + 1;
         else
           assert false report "Correct output: input=" & std_logic'image(data_i) &
-                 ", data_o=" & std_logic'image(data_o);
+                 ", data_o=" & std_logic'image(data_o) severity note;
         end if;
       end loop;
 
       wait for c_CLK_PERIOD;
     end loop;
 
-    assert false report "Total errors: " & integer'image(error_count);
+    assert false report "Total errors: " & integer'image(error_count) severity note;
 
     test_stop <= '1';
-    assert false report "Simulation finished";
+    assert false report "Simulation finished" severity note;
     wait;
   end process tb;
 
