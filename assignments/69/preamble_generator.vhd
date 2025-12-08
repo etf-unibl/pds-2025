@@ -68,7 +68,7 @@ end preamble_generator;
 --! asserted. Each state corresponds to a specific output bit.
 architecture arch of preamble_generator is
   type t_mc_sm_type is
-    (idle, state_00, state_10, state_01, state_02, state_03, state_11, state_12, state_13);
+    (idle, s0, s1, s2, s3, s4, s5, s6, s7);
   signal state_reg, state_next : t_mc_sm_type;
   signal buffered_data, buf_reg : std_logic;
 begin
@@ -76,7 +76,7 @@ begin
   state : process(clk_i,rst_i)
   begin
     if rst_i = '1' then
-      state_reg <= idle;
+      state_reg <= idle;	
     elsif rising_edge(clk_i) then
       state_reg <= state_next;
     end if;
@@ -95,26 +95,26 @@ begin
   begin
     case state_reg is
       when idle =>
-        if start_i = '1' then
-          state_next <= state_10;
+        if start_i = '1' then     
+          state_next <= s0;
         else
           state_next <= idle;
         end if;
-      when state_10 =>
-        state_next <= state_00;
-      when state_00 =>
-        state_next <= state_11;
-      when state_11 =>
-        state_next <= state_01;
-      when state_01 =>
-        state_next <= state_12;
-      when state_12 =>
-        state_next <= state_02;
-      when state_02 =>
-        state_next <= state_13;
-      when state_13 =>
-        state_next <= state_03;
-      when state_03 =>
+      when s0 =>
+        state_next <= s1;
+      when s1 =>
+        state_next <= s2;
+      when s2 =>
+        state_next <= s3;
+      when s3 =>
+        state_next <= s4;
+      when s4 =>
+        state_next <= s5;
+      when s5 =>
+        state_next <= s6;
+      when s6 =>
+        state_next <= s7;
+      when s7 =>
         state_next <= idle;
     end case;
   end process next_state;
@@ -124,24 +124,24 @@ begin
     buffered_data <= '0';
     case state_next is
       when idle =>
-      when state_10 =>
+      when s0 =>
         buffered_data <= '1';
-      when state_00 =>
+      when s1 =>
         buffered_data <= '0';
-      when state_11 =>
+      when s2 =>
         buffered_data <= '1';
-      when state_01 =>
+      when s3 =>
         buffered_data <= '0';
-      when state_12 =>
+      when s4 =>
         buffered_data <= '1';
-      when state_02 =>
+      when s5 =>
         buffered_data <= '0';
-      when state_13 =>
+      when s6 =>
         buffered_data <= '1';
-      when state_03 =>
+      when s7 =>
         buffered_data <= '0';
     end case;
   end process look_ahead;
   --! @brief output logic
-  data_o <= buffered_data;
+  data_o <= buf_reg;
 end arch;
