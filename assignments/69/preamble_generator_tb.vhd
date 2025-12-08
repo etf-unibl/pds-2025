@@ -92,7 +92,7 @@ begin
   begin
     rst_i_tb <= '0';
     start_i_tb <= '0';
-    wait for 50 ns;
+    wait for 10 ns;
     start_i_tb <= '1';
     wait for 40 ns;
     start_i_tb <= '0';
@@ -104,6 +104,9 @@ begin
     rst_i_tb <= '1';
     wait for 50 ns;
     rst_i_tb <= '0';
+    wait for 40 ns;
+    start_i_tb <= '1';
+    wait for 330 ns;
     start_i_tb <= '0';
     end_flag <= '1';
     wait;
@@ -130,7 +133,6 @@ begin
         end loop;
       end if;
       wait until end_flag = '1';
-      wait for 0 ns;
       if error_counter = 0 then
         assert false report "--- TESTING PASSED ---" severity note;
       else

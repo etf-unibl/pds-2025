@@ -118,8 +118,8 @@ begin
         state_next <= idle;
     end case;
   end process next_state;
-  --! @brief Moore logic
-  moore : process(state_next)
+  --! @brief look-ahead output logic
+  look_ahead : process(state_next)
   begin
     buffered_data <= '0';
     case state_next is
@@ -142,7 +142,7 @@ begin
       when state_03 =>
         buffered_data <= '0';
     end case;
-  end process moore;
+  end process look_ahead;
   --! @brief output logic
   data_o <= buf_reg;
 end arch;
