@@ -76,11 +76,20 @@ begin
   state : process(clk_i,rst_i)
   begin
     if rst_i = '1' then
+      state_reg <= idle;
+    elsif rising_edge(clk_i) then
+      state_reg <= state_next;
+    end if;
+  end process state;
+  --! buffer register
+  output_buffer : process(clk_i,rst_i)
+  begin
+    if rst_i = '1' then
       buf_reg <= '0';
     elsif rising_edge(clk_i) then
       buf_reg <= buffered_data;
     end if;
-  end process state;
+  end process output_buffer;
   --! next-state logic
   next_state : process(state_reg,start_i)
   begin
