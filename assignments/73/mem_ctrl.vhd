@@ -41,7 +41,7 @@
 
 -----------------------------------------------------------------------------
 --! @file mem_ctrl.vhd
---! @brief implements a memory controller that manages read and write
+--! @brief Implements a memory controller that manages read and write
 --  operations to a hypothetical memory device
 -----------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ end mem_ctrl;
 --! @brief Architecture implementing the memory controller logic.
 architecture arch of mem_ctrl is
   --! Type that represents possible states of memory controller (based on FSM).
-  type t_mc_sm_type is (idle, read1, read_burst_1, read2 ,read3, read4, write);
+  type t_mc_sm_type is (idle, read1, read_burst_1, read2, read3, read4, write);
   --! @brief Registers for current and next states of the FSM.
   signal state_reg, state_next : t_mc_sm_type;
 begin

@@ -40,7 +40,7 @@
 
 -----------------------------------------------------------------------------
 --! @file mem_ctrl_tb.vhd
---! @brief implements a testbench for memory controller that manages read and
+--! @brief Implements a testbench for memory controller that manages read and
 --  write operations to a hypothetical memory device.
 -----------------------------------------------------------------------------
 
