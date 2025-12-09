@@ -11,8 +11,11 @@ var searchData=
   ['p8_8',['p8',['../classone__bit__full__adder_1_1blc__arch.html#a7a1213fc40871da1960a33caa4a5b4a7',1,'one_bit_full_adder::blc_arch']]],
   ['p9_9',['p9',['../classone__bit__full__adder_1_1blc__arch.html#a7ef25b47844ffe60057c45d19741494b',1,'one_bit_full_adder::blc_arch']]],
   ['process_5f0_10',['PROCESS_0',['../classdual__mode__comparator_1_1arch.html#a81922edeab61a686c85128a9b1432fac',1,'dual_mode_comparator::arch']]],
-  ['process_5f1_11',['PROCESS_1',['../classmem__ctrl_1_1arch.html#a736cfbdc74dad4ba5e9426fea517bc71',1,'mem_ctrl::arch']]],
-  ['process_5f2_12',['PROCESS_2',['../classmem__ctrl_1_1arch.html#a8c603f988d1424793cae67d44858d62e',1,'mem_ctrl::arch']]],
-  ['process_5f3_13',['PROCESS_3',['../classmem__ctrl_1_1arch.html#a3fbe391e05a4d32b99490dc90da578ab',1,'mem_ctrl::arch']]],
-  ['process_5f4_14',['PROCESS_4',['../classmem__ctrl_1_1arch.html#a14051cb1170f2a2de2f65396714b4f34',1,'mem_ctrl::arch']]]
+  ['process_5f1_11',['PROCESS_1',['../classnrzi__encoder_1_1arch.html#ac7a6c41acab86c26d998c019a75aaef9',1,'nrzi_encoder::arch']]],
+  ['process_5f2_12',['PROCESS_2',['../classnrzi__encoder_1_1arch.html#a2675923bc6532af5ef0c1432debf7738',1,'nrzi_encoder::arch']]],
+  ['process_5f3_13',['PROCESS_3',['../classnrzi__encoder_1_1arch.html#af65ff5ceb291e63e81bd2b26d4f040c7',1,'nrzi_encoder::arch']]],
+  ['process_5f4_14',['PROCESS_4',['../classmem__ctrl_1_1arch.html#ac1317ee71ff8b9d8ff5fcc53984490bb',1,'mem_ctrl::arch']]],
+  ['process_5f5_15',['PROCESS_5',['../classmem__ctrl_1_1arch.html#aa12664dabe6d6cd2c3f615e090788dc1',1,'mem_ctrl::arch']]],
+  ['process_5f6_16',['PROCESS_6',['../classmem__ctrl_1_1arch.html#abfb58ef661b812ce88a406a22c347ac1',1,'mem_ctrl::arch']]],
+  ['process_5f7_17',['PROCESS_7',['../classmem__ctrl_1_1arch.html#a48e37a2296af575e6099d55dbdcd9713',1,'mem_ctrl::arch']]]
 ];

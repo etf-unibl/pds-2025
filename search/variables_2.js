@@ -10,6 +10,6 @@ var searchData=
   ['carry_5fo_7',['CARRY_o',['../classsingle__digit__bcd__adder.html#a89eac35aab8169655ff8673dfb9ed254',1,'single_digit_bcd_adder']]],
   ['carry_5fsum_8',['carry_sum',['../classsimple__alu_1_1rtl.html#abcd2a0eaf3069c5fae14d57963273d4d',1,'simple_alu::rtl']]],
   ['cin_5fnot_9',['cin_not',['../classone__bit__full__adder_1_1blc__arch.html#adf1714b57cb7deb5aa28fce9bed1621f',1,'one_bit_full_adder::blc_arch']]],
-  ['clk_5fi_10',['clk_i',['../classmem__ctrl.html#ae8d3e5458b0e3cd523d6461463e36fe8',1,'mem_ctrl']]],
+  ['clk_5fi_10',['clk_i',['../classnrzi__encoder.html#ae8d3e5458b0e3cd523d6461463e36fe8',1,'nrzi_encoder.clk_i()'],['../classmem__ctrl.html#ae8d3e5458b0e3cd523d6461463e36fe8',1,'mem_ctrl.clk_i()']]],
   ['ctrl_5fi_11',['CTRL_i',['../classmulti__function__aritmetic__unit.html#a1aa2e5ef5609c8d8b3ab99ba9fbc0c64',1,'multi_function_aritmetic_unit']]]
 ];

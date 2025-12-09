@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['test_2evhd_0',['test.vhd',['../11_2test_8vhd.html',1,'(Global Namespace)'],['../13_2test_8vhd.html',1,'(Global Namespace)'],['../15_2test_8vhd.html',1,'(Global Namespace)'],['../17_2test_8vhd.html',1,'(Global Namespace)'],['../19_2test_8vhd.html',1,'(Global Namespace)'],['../22_2test_8vhd.html',1,'(Global Namespace)'],['../25_2test_8vhd.html',1,'(Global Namespace)'],['../9_2test_8vhd.html',1,'(Global Namespace)']]],
-  ['three_5fmode_5fbarrel_5fshifter_2evhd_1',['three_mode_barrel_shifter.vhd',['../three__mode__barrel__shifter_8vhd.html',1,'']]],
-  ['two_5fbit_5fcomparator_2evhd_2',['two_bit_comparator.vhd',['../two__bit__comparator_8vhd.html',1,'']]]
+  ['simple_5falu_2evhd_0',['simple_alu.vhd',['../simple__alu_8vhd.html',1,'']]],
+  ['single_5fdigit_5fbcd_5fadder_2evhd_1',['single_digit_bcd_adder.vhd',['../single__digit__bcd__adder_8vhd.html',1,'']]]
 ];
