@@ -1,0 +1,84 @@
+-----------------------------------------------------------------------------
+-- Faculty of Electrical Engineering
+-- PDS 2025
+-- https://github.com/etf-unibl/pds-2025/
+-----------------------------------------------------------------------------
+--
+-- unit name:     lzc4_unit_tb
+--
+-- description:
+--
+--   This file implements a testbench for the 4-bit leading zero counter unit.
+--
+-----------------------------------------------------------------------------
+-- Copyright (c) 2025 Faculty of Electrical Engineering
+-----------------------------------------------------------------------------
+-- The MIT License
+-----------------------------------------------------------------------------
+-- Copyright 2025 Faculty of Electrical Engineering
+--
+-- Permission is hereby granted, free of charge, to any person obtaining a
+-- copy of this software and associated documentation files (the "Software"),
+-- to deal in the Software without restriction, including without limitation
+-- the rights to use, copy, modify, merge, publish, distribute, sublicense,
+-- and/or sell copies of the Software, and to permit persons to whom
+-- the Software is furnished to do so, subject to the following conditions:
+--
+-- The above copyright notice and this permission notice shall be included in
+-- all copies or substantial portions of the Software.
+--
+-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+-- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+-- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+-- THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+-- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+-- ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+-- OTHER DEALINGS IN THE SOFTWARE
+-----------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity lzc4_unit_tb is
+end lzc4_unit_tb;
+
+architecture arch of lzc4_unit_tb is
+
+  signal INPUT_DATA_i  : std_logic_vector(3 downto 0);
+  signal OUTPUT_DATA_o : std_logic_vector(2 downto 0);
+
+begin
+
+  DUT : entity work.lzc4_unit
+    port map (
+      INPUT_DATA_i  => INPUT_DATA_i,
+      OUTPUT_DATA_o => OUTPUT_DATA_o
+    );
+
+  stim_proc : process
+  begin
+
+    INPUT_DATA_i <= "0000";
+    wait for 10 ns;
+
+    INPUT_DATA_i <= "0001";
+    wait for 10 ns;
+
+    INPUT_DATA_i <= "0010";
+    wait for 10 ns;
+
+    INPUT_DATA_i <= "0100";
+    wait for 10 ns;
+
+    INPUT_DATA_i <= "1000";
+    wait for 10 ns;
+
+    INPUT_DATA_i <= "1111";
+    wait for 10 ns;
+
+    assert false report "=== SIMULATION COMPLETED ===" severity note;
+
+    wait;
+  end process stim_proc;
+
+end arch;
