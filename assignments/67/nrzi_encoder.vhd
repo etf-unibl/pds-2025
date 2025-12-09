@@ -8,7 +8,7 @@
 --
 -- description:
 --
---   This file implements a NRZI(Non-return-to-zero) encoding.
+--   This file implements a NRZI (Non-return-to-zero) encoding.
 --
 --
 -----------------------------------------------------------------------------

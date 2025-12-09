@@ -8,7 +8,7 @@
 --
 -- description:
 --
---   This file implements a NRZI(Non-return-to-zero) encoding test-bench.
+--   This file implements a NRZI (Non-return-to-zero) encoding test-bench.
 --
 --
 -----------------------------------------------------------------------------
