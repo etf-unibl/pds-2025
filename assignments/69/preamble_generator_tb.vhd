@@ -123,6 +123,7 @@ begin
         assert false report "--- TESTING ---" severity note;
         for i in 0 to 7 loop
           wait until rising_edge(clk_i_tb);
+			 wait for 1 ns;
           if rst_i_tb = '1' then
             assert false report "Reset detected, sequence generation stopped." severity note;
             exit;

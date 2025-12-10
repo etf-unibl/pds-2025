@@ -37,7 +37,7 @@
 -- OTHER DEALINGS IN THE SOFTWARE
 -----------------------------------------------------------------------------
 --! @file preamble_generator.vhd
---! @brief implements the generation of the following sequence: 10101010
+--! @brief Implements the generation of the following sequence: 10101010
 --! on rising edge of start_i
 
 library ieee;
@@ -72,17 +72,8 @@ architecture arch of preamble_generator is
   signal state_reg, state_next : t_mc_sm_type;
   signal buffered_data, buf_reg : std_logic;
 begin
-  --! @brief state register
-  state : process(clk_i,rst_i)
-  begin
-    if rst_i = '1' then
-      state_reg <= idle;	
-    elsif rising_edge(clk_i) then
-      state_reg <= state_next;
-    end if;
-  end process state;
-  --! buffer register
-  output_buffer : process(clk_i,rst_i)
+  --! @brief output buffer
+  output_buffer : process(clk_i, rst_i)
   begin
     if rst_i = '1' then
       buf_reg <= '0';
@@ -90,12 +81,21 @@ begin
       buf_reg <= buffered_data;
     end if;
   end process output_buffer;
+  --! @brief state register
+  state : process(clk_i,rst_i)
+  begin
+    if rst_i = '1' then
+      state_reg <= idle;
+    elsif rising_edge(clk_i) then
+      state_reg <= state_next;
+    end if;
+  end process state;
   --! @brief next-state logic
   next_state : process(state_reg, start_i)
   begin
     case state_reg is
       when idle =>
-        if start_i = '1' then     
+        if start_i = '1' then
           state_next <= s0;
         else
           state_next <= idle;
@@ -142,6 +142,5 @@ begin
         buffered_data <= '0';
     end case;
   end process look_ahead;
-  --! @brief output logic
   data_o <= buf_reg;
 end arch;
