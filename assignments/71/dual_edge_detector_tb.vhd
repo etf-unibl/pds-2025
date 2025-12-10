@@ -38,7 +38,7 @@
 
 -----------------------------------------------------------------------------
 --! @file dual_edge_detector_tb.vhd
---! @brief implements test bench for dual_edge_detector
+--! @brief Implements test bench for dual_edge_detector
 -----------------------------------------------------------------------------
 
 library ieee;
