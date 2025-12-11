@@ -5,9 +5,8 @@
 --
 -- description:   Self-checking testbench for preamble_detector.
 --                Generates clock and reset, applies a serial test vector
---                to data_i and uses assert statements to verify that
---                match_o is asserted exactly when the preamble "10101010"
---                appears on the input.
+--                and checks that match_o pulses once for each
+--                non-overlapping occurrence of the "10101010" preamble.
 -----------------------------------------------------------------------------
 -- Copyright (c) 2025 Faculty of Electrical Engineering
 -----------------------------------------------------------------------------
@@ -36,21 +35,22 @@
 --! @file preamble_detector_tb.vhd
 --! @brief Self-checking testbench for the preamble_detector.
 --! @details
---!   Generates clock and reset, applies a serial test vector to data_i
---!   and uses assert statements to verify that match_o is asserted
---!   exactly when the preamble "10101010" appears on the input.
+--!   Drives a fixed serial test vector to data_i, compares match_o
+--!   against a simple reference model and reports the total number
+--!   of detected mismatches.
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+
 
 --! @brief Testbench entity without ports.
---! @details
---!   The testbench instantiates the DUT and generates all required
---!   stimulus signals internally.
 entity preamble_detector_tb is
 end preamble_detector_tb;
 
+--! @brief Testbench architecture for preamble_detector.
+--! @details
+--!   Instantiates the DUT, generates the clock and reset, and
+--!   runs a self-checking stimulus process.
 architecture arch of preamble_detector_tb is
 
   --! @brief Device under test (DUT).
@@ -67,7 +67,13 @@ architecture arch of preamble_detector_tb is
   signal rst_i   : std_logic := '0';
   signal data_i  : std_logic := '0';
   signal match_o : std_logic;
-  signal C_DATA_VEC : std_logic_vector(23 downto 0) := "001010101010101010000000";
+
+  --! @brief Serial test vector.
+  --! Number of bits in the test vector.
+  constant c_N : integer := 24;
+  --! Test sequence containing the preamble.
+  constant c_DATA_VEC : std_logic_vector(c_N - 1 downto 0) :=
+    "001010101010101010000000";
 
 begin
 
@@ -80,22 +86,25 @@ begin
     );
 
   --! @brief Clock generator with 20 ns period.
-  clk_process : process
+  process
   begin
     clk_i <= '0';
     wait for 10 ns;
     clk_i <= '1';
     wait for 10 ns;
-  end process clk_process;
+  end process;
 
-  --! @brief Stimulus and self-checking process.
+  --! @brief Stimulus and check process.
   --! @details
-  --!   Shifts the input bits from C_DATA_VEC into the DUT and maintains
-  --!   a reference shift register last_bits. Whenever last_bits
-  --!   equals "10101010", the process expects match_o = '1';
-  --!   otherwise it expects match_o = '0'.
+  --!   Shifts bits from c_DATA_VEC, builds a reference window last_bits
+  --!   and computes expected_match without allowing overlapping pulses.
+  --!   Any mismatch between match_o and expected_match is counted.
   sim_proc : process
     variable last_bits : std_logic_vector(7 downto 0) := (others => '0');
+    variable expected_match : std_logic;
+    variable error_count : integer := 0;
+    variable no_overlapping : integer range 0 to 7 := 0;
+
   begin
     rst_i  <= '1';
     data_i <= '0';
@@ -103,22 +112,39 @@ begin
     rst_i  <= '0';
     wait for 20 ns;
 
-    for i in 0 to 23 loop
-      data_i <= C_DATA_VEC(i);
+    for i in 0 to c_N - 1 loop
+      data_i <= c_DATA_VEC(i);
 
       wait until rising_edge(clk_i);
       wait for 1 ns;  -- allow signals in DUT to settle
 
-      last_bits := last_bits(6 downto 0) & C_DATA_VEC(i);
+      last_bits := last_bits(6 downto 0) & c_DATA_VEC(i);
 
-      if last_bits = "10101010" then
-        assert match_o = '1'
-          severity error;
+      if (last_bits = "10101010") and (no_overlapping = 0) then
+        expected_match := '1';
+        no_overlapping := 7;
       else
-        assert match_o = '0'
+        expected_match := '0';
+        if  no_overlapping > 0 then
+          no_overlapping := no_overlapping - 1;
+        end  if;
+      end if;
+
+      if match_o /= expected_match then
+        assert false report " Error: cycle=" & integer'image(i) &
+                 ", expected match_o=" & std_logic'image(expected_match) &
+                 ", got=" & std_logic'image(match_o)
           severity error;
+        error_count := error_count + 1;
       end if;
     end loop;
+
+    if  error_count = 0 then
+      assert false report "Simulation finished" severity note;
+    else
+      assert false report "Total errors: " & integer'image(error_count)
+        severity error;
+    end if;
 
     wait;
   end process sim_proc;

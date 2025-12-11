@@ -7,10 +7,9 @@
 -- unit name:     preamble_detector
 --
 -- description:   Preamble detector for a serial bit stream.
---                Implements a Moore state machine that monitors the
---                serial input data_i and generates a one clock cycle
---                pulse on match_o whenever the bit sequence "10101010"
---                is detected.
+--                Implements a Moore state machine that monitors data_i
+--                and generates a one-clock-cycle pulse on match_o for
+--                each non-overlapping occurrence of the "10101010" sequence.
 -----------------------------------------------------------------------------
 -- Copyright (c) 2025 Faculty of Electrical Engineering
 -----------------------------------------------------------------------------
@@ -37,11 +36,10 @@
 -- OTHER DEALINGS IN THE SOFTWARE.
 -----------------------------------------------------------------------------
 --! @file preamble_detector.vhd
---! @brief Preamble detector for a serial bit stream.
+--! @brief Preamble detector for the "10101010" bit sequence.
 --! @details
---!   Implements a Moore state machine that monitors the serial input
---!   data_i and generates a one clock cycle pulse on match_o whenever
---!   the bit sequence "10101010" is detected.
+--!   Moore FSM that monitors data_i and  generates a one-clock-cycle
+--!   pulse on match_o when the preamble "10101010" is received.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -49,9 +47,7 @@ use ieee.numeric_std.all;
 
 --! @brief Entity of the preamble detector.
 --! @details
---!   The entity defines a synchronous clock input, asynchronous reset,
---!   serial data input and an output pulse that indicates successful
---!   preamble detection.
+--!   Provides synchronous clock, asynchronous reset, serial input bit and a pulse output that indicates preamble detection.
 entity preamble_detector is
   port (
     clk_i   : in  std_logic;  --! Clock input. The rising edge is used to sample data_i and update the FSM state.
@@ -63,50 +59,48 @@ end preamble_detector;
 
 --! @brief Implementation of the Moore state machine.
 --! @details
---!   The architecture uses nine states (S0 to S8) to track partial matches
---!   of the preamble "10101010". State S8 represents a complete match and
---!   is the only state in which match_o is asserted.
+--!   The architecture uses eight states (S0 to S7) to track the sequence "10101010"
+--!   and drives a registered one-cycle pulse on match_o.
 architecture arch of preamble_detector is
 
   --! @brief FSM state type.
   --! @details
-  --!   Each state encodes how many of the most recent input bits match
-  --!   the prefix of the preamble "10101010".
-  type t_state is
-    (S0, S1, S2, S3, S4, S5, S6, S7, S8);
+  --!   Encodes the current match progress for the preamble.
+  type t_state is (S0, S1, S2, S3, S4, S5, S6, S7);
 
-  --! Registers holding the current and next FSM state.
-  signal state_reg  : t_state;
-  signal state_next : t_state;
-  signal match_int : std_logic;
-  signal match_reg : std_logic;
+  --! @brief State and output registers.
+  signal state_reg, state_next : t_state;
+  signal match_reg : std_logic := '0';
 
 begin
 
-  --! @brief State register.
+  --! @brief State and match pulse register.
   --! @details
-  --!   On the rising edge of clk_i the current state is updated with
-  --!   state_next. When rst_i is '1', the FSM is reset to S0.
-  state_register : process (clk_i, rst_i)
+  --!   Updates the FSM state and asserts match_reg for one cycle
+  --!   when the sequence "10101010" is completed.
+  process (clk_i, rst_i)
   begin
     if rst_i = '1' then
       state_reg <= S0;
+      match_reg <= '0';
     elsif rising_edge(clk_i) then
       state_reg <= state_next;
-    end if;
-  end process state_register;
 
-  --! @brief Combinational next-state and output logic.
+      if state_reg = S7 and data_i = '0' then
+        match_reg <= '1';
+      else
+        match_reg <= '0';
+      end if;
+    end if;
+  end process;
+
+  --! @brief Next-state combinational logic.
   --! @details
-  --!   Computes state_next and match_o based on the current state
-  --!   and the input bit data_i. The output match_o is asserted
-  --!   only in state S8.
-  next_state_logic : process (state_reg, data_i)
+  --!   Computes state_next from on state_reg and data_i.
+  process (state_reg, data_i)
   begin
     -- default values
-    state_next <= state_reg;
-    match_int    <= '0';
-
+    state_next <= S0;
     case state_reg is
 
       when S0 =>
@@ -160,32 +154,14 @@ begin
 
       when S7 =>
         if data_i = '0' then
-          state_next <= S8;
-          match_int  <= '1';
+          state_next <= S0;
         else
           state_next <= S1;
         end if;
 
-      when S8 =>
-        if data_i = '1' then
-          state_next <= S7;
-        else
-          state_next <= S0;
-        end if;
-
-      when others =>
-        state_next <= S0;
-
     end case;
-  end process next_state_logic;
-  output_reg : process (clk_i, rst_i)
-  begin
-    if rst_i = '1' then
-      match_reg <= '0';
-    elsif rising_edge(clk_i) then
-      match_reg <= match_int;
-    end if;
-  end process output_reg;
+  end process;
+  --! @brief Match output assignment.
   match_o <= match_reg;
 
 end arch;
