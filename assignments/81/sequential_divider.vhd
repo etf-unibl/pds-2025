@@ -145,7 +145,7 @@ begin
   --! @brief Data path routing multiplexer process.
   --! @details Determines next values for registers based on FSM state.
   process(state_reg, b_reg, rm_reg, q_reg,
-              a_i, b_i, inc_out, sub_out, b_is_0)
+              a_i, b_i, inc_out, sub_out, count_0)
   begin
     --! Defaults: hold values.
     b_next <= b_reg;
