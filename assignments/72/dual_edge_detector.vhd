@@ -105,20 +105,15 @@ begin
     end case;
   end process;
 
-  --! @brief Mealy output logic.
-  --! @details
-  --! Output pulse generation (Mealy FSM):
-  --! - p_o='1' when state_reg indicates previous level and strobe_i indicates
-  --!   opposite level (an edge is present)
-  --! - otherwise p_o='0'
-  process(state_reg, strobe_i)
+  process(state_reg, state_next)
   begin
-    if state_reg = zero and strobe_i = '1' then
+    if state_reg = zero and state_next = one then
       p_o <= '1';
-    elsif state_reg = one and strobe_i = '0' then
+    elsif state_reg = one and state_next = zero then
       p_o <= '1';
     else
       p_o <= '0';
     end if;
   end process;
+
 end arch;
