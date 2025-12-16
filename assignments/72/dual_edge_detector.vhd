@@ -105,15 +105,11 @@ begin
     end case;
   end process;
 
-  process(state_reg, state_next)
-  begin
-    if state_reg = zero and state_next = one then
-      p_o <= '1';
-    elsif state_reg = one and state_next = zero then
-      p_o <= '1';
-    else
-      p_o <= '0';
-    end if;
-  end process;
-
+  --! @brief Output logic
+  --! @details
+  --! zero + '1'  => rising edge detected,
+  --! one  + '0'  => falling edge detected
+  p_o <= '1' when (state_reg = zero and strobe_i = '1') else
+         '1' when (state_reg = one  and strobe_i = '0') else
+         '0';
 end arch;

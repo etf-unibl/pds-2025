@@ -91,7 +91,7 @@ architecture arch of dual_edge_detector_tb is
   signal i : integer := 0;            --! Clock cycle counter for ending the simulation clock
 
   constant c_T : time := 20 ns;       --! Clock period
-  constant c_CLK_NUM : integer := 20; --! Number of clock cycles to generate before stopping clk_gen
+  constant c_CLK_NUM : integer := 50; --! Number of clock cycles to generate before stopping clk_gen
 
   --! @brief Test vector record type
   --! @details
@@ -99,7 +99,7 @@ architecture arch of dual_edge_detector_tb is
   --! expected_out is the expected DUT output value for that transition.
   type t_test_vector is record
     strobe_in    : std_logic_vector(1 downto 0);
-    expected_out : std_logic;
+    expected_out : std_logic; --! expected p_o IMMEDIATELY after strobe change
   end record t_test_vector;
   
   --! @brief Array type holding multiple test vectors.
@@ -161,34 +161,61 @@ begin
   --! - prints the current test details (severity note)
   --! - asserts that DUT output matches expected_out (severity error on fail)
   stimulus_check : process
+    variable idx       : integer; -- Loop index
+    variable had_error : boolean := false; -- Global error flag
   begin
-    for i in c_TEST_VECTORS'range loop
-      strobe_i <= c_TEST_VECTORS(i).strobe_in(1);
-      wait for c_T;
-      strobe_i <= c_TEST_VECTORS(i).strobe_in(0);
-      wait for c_T/8;
+    wait until rst_i = '0';
+    wait until rising_edge(clk_i);
+
+    for idx in c_TEST_VECTORS'range loop
+      
+      strobe_i <= c_TEST_VECTORS(idx).strobe_in(1); -- previous level
+      wait until rising_edge(clk_i);
+
+      wait for c_T/4;
+      strobe_i <= c_TEST_VECTORS(idx).strobe_in(0); -- new level
+
+      wait for 1 ps;
 
       assert false
-      report "Test " & integer'image(i) & " : " & LF &
-             "strobe_in = " &
-             std_logic'image(c_TEST_VECTORS(i).strobe_in(1)) &
-             std_logic'image(c_TEST_VECTORS(i).strobe_in(0)) & LF &
-             "expected_out = " &
-             std_logic'image(c_TEST_VECTORS(i).expected_out) & LF &
-             "actual_out = " &
-             std_logic'image(p_o)
-      severity note;
+        report "Test " & integer'image(idx) & " : " & LF &
+               "strobe_in = " &
+               std_logic'image(c_TEST_VECTORS(idx).strobe_in(1)) &
+               std_logic'image(c_TEST_VECTORS(idx).strobe_in(0)) & LF &
+               "expected_out (immediately after input change) = " &
+               std_logic'image(c_TEST_VECTORS(idx).expected_out) & LF &
+               "actual_out = " & std_logic'image(p_o)
+        severity note;
 
-      assert (p_o = c_TEST_VECTORS(i).expected_out)
-      report "Test failed for index " & integer'image(i)
-      severity error;
+      if p_o /= c_TEST_VECTORS(idx).expected_out then
+        had_error := true;
+        assert false
+          report "Mealy output error (immediate) at index " & integer'image(idx)
+          severity error;
+      end if;
 
-      wait for c_T;
+      wait until rising_edge(clk_i);
+      wait for 1 ps;
+
+      if p_o /= '0' then
+        had_error := true;
+        assert false
+          report "Pulse clear error (p_o not cleared after clock edge) at index " &
+                 integer'image(idx)
+          severity error;
+      end if;
+
     end loop;
 
-    assert false
-    report "Test successfully completed."
-    severity note;
+    if had_error then
+      assert false
+        report "Test completed WITH ERRORS."
+        severity failure;
+    else
+      assert false
+        report "Test successfully completed."
+        severity note;
+    end if;
 
     wait;
   end process stimulus_check;
