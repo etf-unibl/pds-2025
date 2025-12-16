@@ -67,6 +67,7 @@ architecture arch of sequential_multiplier is
   signal r_reg, r_next : unsigned(2*c_WIDTH-1 downto 0);
   signal adder_out : unsigned(2*c_WIDTH-1 downto 0);
   signal sub_out : unsigned(c_WIDTH-1 downto 0);
+  signal ready_r : std_logic;
 begin
   --! @brief FSM state register
   --! Synchronously updates the current FSM state on the rising edge
@@ -79,6 +80,20 @@ begin
       state_reg <= state_next;
     end if;
   end process;
+  --! @brief ready_r logic
+  process(clk_i, rst_i)
+  begin
+    if rst_i = '1' then
+      ready_r <= '0';
+    elsif rising_edge(clk_i) then
+      if (state_reg = op and count_0 = '1') or (state_reg = ab0) then
+        ready_r <= '1';
+      else
+        ready_r <= '0';
+      end if;
+    end if;
+  end process;
+  ready_o <= ready_r;
   --! @brief FSM next-state logic
   --! Determines state transitions based on start signal, operand values,
   --! and loop counter status. Enables back-to-back multiplication.
@@ -111,8 +126,6 @@ begin
         end if;
     end case;
   end process;
-  --! control path: output logic
-  ready_o <= '1' when (state_reg = op and count_0 = '1') or state_reg = ab0 else '0';
   --! @brief Datapath registers
   --! Stores operands, loop counter, and accumulation result.
   process(clk_i, rst_i)
