@@ -112,7 +112,7 @@ begin
     end case;
   end process;
   --! control path: output logic
-  ready_o <= '1' when state_reg = op and count_0 = '1' else '0';
+  ready_o <= '1' when (state_reg = op and count_0 = '1') or state_reg = ab0 else '0';
   --! @brief Datapath registers
   --! Stores operands, loop counter, and accumulation result.
   process(clk_i, rst_i)
