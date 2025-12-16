@@ -156,7 +156,7 @@ begin
   --! data path: status
   a_is_0 <= '1' when a_i = "00000000" else '0';
   b_is_0 <= '1' when b_i = "00000000" else '0';
-  count_0 <= '1' when n_reg = "00000000" else '0';
+  count_0 <= '1' when n_next = "00000000" else '0';
   --! data path: output
   c_o <= std_logic_vector(r_reg);
 end arch;
