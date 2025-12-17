@@ -56,13 +56,13 @@ entity binary_to_bcd is
     start_i  : in  std_logic;
     --! 13-bit unsigned binary input value.
     binary_i : in  std_logic_vector(12 downto 0);
-    --! BCD digit: ones (least significant decimal digit).
+    --! BCD digit: most significant decimal digit.
     bcd1_o   : out std_logic_vector(3 downto 0);
-    --! BCD digit: tens.
+    --! BCD digit.
     bcd2_o   : out std_logic_vector(3 downto 0);
-    --! BCD digit: hundreds.
+    --! BCD digit.
     bcd3_o   : out std_logic_vector(3 downto 0);
-    --! BCD digit: thousands (most significant decimal digit).
+    --! BCD digit: least significant decimal digit.
     bcd4_o   : out std_logic_vector(3 downto 0);
     --! Ready: '1' when the unit is idle and result is valid.
     ready_o  : out std_logic
@@ -240,9 +240,9 @@ begin
   --! Asserted when all c_N_BITS bits have been processed.
   cnt_done <= '1' when cnt_reg = to_unsigned(c_N_BITS-1, cnt_reg'length) else '0';
 
-  bcd1_o <= std_logic_vector(bcd1_reg);
-  bcd2_o <= std_logic_vector(bcd2_reg);
-  bcd3_o <= std_logic_vector(bcd3_reg);
-  bcd4_o <= std_logic_vector(bcd4_reg);
+  bcd1_o <= std_logic_vector(bcd4_reg);
+  bcd2_o <= std_logic_vector(bcd3_reg);
+  bcd3_o <= std_logic_vector(bcd2_reg);
+  bcd4_o <= std_logic_vector(bcd1_reg);
 
 end arch;
