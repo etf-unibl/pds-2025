@@ -70,6 +70,7 @@ architecture arch of preamble_generator_tb is
   signal end_flag                 : std_logic := '0';
   constant c_EXPECTED_OUTPUT : std_logic_vector(7 downto 0) := "10101010";
   constant c_CLK_PERIOD           : time := 40 ns;
+  constant c_START_CHANGE         : time := 42 ns;
 begin
   uut : preamble_generator
   port map(
@@ -92,25 +93,25 @@ begin
   begin
     rst_i_tb <= '0';
     start_i_tb <= '0';
-    wait for c_CLK_PERIOD;
+    wait for c_START_CHANGE;
     start_i_tb <= '1';
-    wait for c_CLK_PERIOD;
+    wait for c_START_CHANGE;
     start_i_tb <= '0';
-    wait for c_CLK_PERIOD * 8;
+    wait for c_START_CHANGE * 8;
     start_i_tb <= '1';
-    wait for c_CLK_PERIOD;
+    wait for c_START_CHANGE;
     start_i_tb <= '0';
-    wait for c_CLK_PERIOD * 3;
+    wait for c_START_CHANGE * 3;
     rst_i_tb <= '1';
-    wait for c_CLK_PERIOD;
+    wait for c_START_CHANGE;
     rst_i_tb <= '0';
-    wait for c_CLK_PERIOD;
+    wait for c_START_CHANGE;
     start_i_tb <= '1';
-    wait for c_CLK_PERIOD;
+    wait for c_START_CHANGE;
     start_i_tb <= '0';
-    wait for c_CLK_PERIOD * 8;
+    wait for c_START_CHANGE * 8;
     start_i_tb <= '1';
-    wait for c_CLK_PERIOD * 25;
+    wait for c_START_CHANGE * 25;
     end_flag <= '1';
     wait;
   end process stimulation;
@@ -118,12 +119,9 @@ begin
     variable error_counter : integer := 0;
   begin
     while true loop
-      wait until rising_edge(clk_i_tb);
       if start_i_tb = '1' then
         assert false report "--- TESTING ---" severity note;
         for i in 0 to 7 loop
-          wait until rising_edge(clk_i_tb);
-          wait for 1 ns;
           if rst_i_tb = '1' then
             assert false report "Reset detected, sequence generation stopped." severity note;
             exit;

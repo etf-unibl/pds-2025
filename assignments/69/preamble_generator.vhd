@@ -89,10 +89,8 @@ begin
     if rst_i = '1' then
       state_reg <= idle;
       start_i_prev <= '0';
-      can_execute <= '0';
     elsif rising_edge(clk_i) then
       state_reg <= state_next;
-      can_execute  <= (not start_i_prev) and start_i;
       start_i_prev <= start_i;
     end if;
   end process state;
@@ -127,9 +125,9 @@ begin
   --! @brief look-ahead output logic
   look_ahead : process(state_next)
   begin
-    buffered_data <= '0';
     case state_next is
       when idle =>
+        buffered_data <= '0';
       when s0 =>
         buffered_data <= '1';
       when s1 =>
@@ -149,4 +147,5 @@ begin
     end case;
   end process look_ahead;
   data_o <= buf_reg;
+  can_execute <= start_i and not start_i_prev;
 end arch;
