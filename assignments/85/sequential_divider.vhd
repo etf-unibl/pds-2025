@@ -135,14 +135,14 @@ begin
         if divisor_is_0 = '1' or dividend_lt_divisor = '1' then -- divide by 0
           state_next <= done;
         else
-            state_next <= divide;
+          state_next <= divide;
         end if;
       when divide =>
         if count_is_0 = '1' then
           state_next <= done;
         else
           state_next <= divide;
-        end if;      
+        end if;
       when done =>
         state_next <= idle;
     end case;
@@ -181,7 +181,7 @@ begin
   --!    - if remainder >= divisor: subtract divisor and set quotient bit to 1
   --!    - else: keep remainder and set quotient bit to 0
 
-  process(state_reg, a_reg, b_reg, q_reg, r_reg, iteration_reg, a_i, b_i, divisor_is_0, dividend_lt_divisor)
+  p_next_state : process(state_reg, a_reg, b_reg, q_reg, r_reg, iteration_reg, a_i, b_i, divisor_is_0, dividend_lt_divisor)
     variable idx     : integer; --! Current bit index of dividend
     variable r_shift : unsigned(8 downto 0); --! Shifted remainder candidate
     variable b_ext   : unsigned(8 downto 0); --! 9-bit extended divisor
@@ -206,18 +206,18 @@ begin
         b_ext   := '0' & b_reg; --! Extend divisor to 9 bits
         r_shift := r_reg(7 downto 0) & a_reg(idx); --! Shift remainder left, bring in the current dividend bit
         qv      := q_reg; --! Start from current quotient value and update one bit
-        
+
         --! Restoring step: compare and (optionally) subtract
         if r_shift >= b_ext then
-		      r_next  <= r_shift - b_ext;
+          r_next  <= r_shift - b_ext;
           qv(idx) := '1';
         else
-		      r_next  <= r_shift;
+          r_next  <= r_shift;
           qv(idx) := '0';
         end if;
 
         q_next <= qv;
-        
+
         --! Decrement iteration counter until reaching 0
         if iteration_reg > 0 then
           iteration_next <= iteration_reg - 1;
@@ -234,7 +234,7 @@ begin
           r_next <= '0' & a_reg;
         end if;
     end case;
-  end process;
+  end process p_next_state;
 
   --! @brief Status flags
   --! @details
@@ -248,7 +248,7 @@ begin
   --! @brief Outputs
   --! @details
   --! q_o is the quotient register, r_o is the lower 8 bits of the remainder register.
-  
+
   q_o <= std_logic_vector(q_reg);
   r_o <= std_logic_vector(r_reg(7 downto 0));
 
