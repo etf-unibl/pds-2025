@@ -101,7 +101,7 @@ architecture arch of dual_edge_detector_tb is
     strobe_in    : std_logic_vector(1 downto 0);
     expected_out : std_logic; --! expected p_o IMMEDIATELY after strobe change
   end record t_test_vector;
-  
+
   --! @brief Array type holding multiple test vectors.
   type t_test_vector_array is array(natural range <>) of t_test_vector;
 
@@ -122,7 +122,7 @@ architecture arch of dual_edge_detector_tb is
     );
 
 begin
-  
+
   --! @brief Unit Under Test (UUT) instantiation.
   uut : dual_edge_detector
     port map(
@@ -131,10 +131,10 @@ begin
       strobe_i => strobe_i,
       p_o      => p_o
     );
- 
+
   --! @brief Reset generation.
   --! @details
-  --! rst_i is asserted at time 0 and deasserted after half a clock period. 
+  --! rst_i is asserted at time 0 and deasserted after half a clock period.
   rst_i <= '1', '0' after c_T/2;
 
   --! @brief Clock generator process.
@@ -168,7 +168,7 @@ begin
     wait until rising_edge(clk_i);
 
     for idx in c_TEST_VECTORS'range loop
-      
+
       strobe_i <= c_TEST_VECTORS(idx).strobe_in(1); -- previous level
       wait until rising_edge(clk_i);
 

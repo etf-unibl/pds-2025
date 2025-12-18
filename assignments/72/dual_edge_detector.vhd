@@ -109,7 +109,7 @@ begin
   --! @details
   --! zero + '1'  => rising edge detected,
   --! one  + '0'  => falling edge detected
-  p_o <= '1' when (state_reg = zero and strobe_i = '1') else
-         '1' when (state_reg = one  and strobe_i = '0') else
+  p_o <= '1' when state_reg = zero and strobe_i = '1' else
+         '1' when state_reg = one  and strobe_i = '0' else
          '0';
 end arch;
