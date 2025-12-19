@@ -54,10 +54,10 @@ use IEEE.STD_LOGIC_1164.all;
 --! @brief Entity definition of nrzi_decoder
 entity nrzi_decoder is
   port (
-    clk_i  : in  std_logic;
-    rst_i  : in  std_logic;
-    data_i : in  std_logic;
-    data_o : out std_logic
+    clk_i  : in  std_logic; --! Input clock
+    rst_i  : in  std_logic; --! Active-high reset
+    data_i : in  std_logic; --! NRZI encoded input
+    data_o : out std_logic  --! Decoded output
   );
 end nrzi_decoder;
 
