@@ -11,6 +11,7 @@ var searchData=
   ['agtb_8',['agtb',['../classtwo__bit__comparator.html#ae96b0505aaf8dce0ae43a7539ea0b221',1,'two_bit_comparator']]],
   ['agtb_5fmag_9',['agtb_mag',['../classdual__mode__comparator_1_1arch.html#afe2fdc149b9eac98b8b8efa75b0b08f8',1,'dual_mode_comparator::arch']]],
   ['agtb_5fo_10',['AGTB_o',['../classdual__mode__comparator.html#a444fba705b13b24ffedb7db5c3885d9e',1,'dual_mode_comparator']]],
-  ['altb_11',['altb',['../classtwo__bit__comparator.html#afc451ccb101ae398f883d0caef5bac7c',1,'two_bit_comparator']]],
-  ['amt_5fi_12',['AMT_i',['../classthree__mode__barrel__shifter.html#aff1908cb0683c0f31735726a3abd1bbd',1,'three_mode_barrel_shifter']]]
+  ['all_5fzeros_11',['all_zeros',['../classleading__zero__counter__unit_1_1arch.html#a9d56af436efd30fce9701e73748e4543',1,'leading_zero_counter_unit::arch']]],
+  ['altb_12',['altb',['../classtwo__bit__comparator.html#afc451ccb101ae398f883d0caef5bac7c',1,'two_bit_comparator']]],
+  ['amt_5fi_13',['AMT_i',['../classthree__mode__barrel__shifter.html#aff1908cb0683c0f31735726a3abd1bbd',1,'three_mode_barrel_shifter']]]
 ];

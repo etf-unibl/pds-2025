@@ -13,5 +13,6 @@ var searchData=
   ['oe_5fo_10',['oe_o',['../classmem__ctrl.html#a59639310002ba0ef18db99c9618cbef9',1,'mem_ctrl']]],
   ['one_5fbit_5ffull_5fadder_11',['one_bit_full_adder',['../classfour__bit__full__adder_1_1str__arch.html#a06b4af023068b4329996951fd8773bdb',1,'four_bit_full_adder.str_arch.one_bit_full_adder()'],['../classfour__bit__full__adder_1_1fbfa__arch.html#a06b4af023068b4329996951fd8773bdb',1,'four_bit_full_adder.fbfa_arch.one_bit_full_adder()']]],
   ['one_5fbit_5ffull_5fsubtractor_12',['one_bit_full_subtractor',['../classfour__bit__full__subtractor_1_1fbfs__arch.html#ab7842e904bc6f4b67c1e9026de78c3b3',1,'four_bit_full_subtractor::fbfs_arch']]],
-  ['output_13',['output',['../classone__bit__full__adder_1_1obfa__arch.html#aa80f57dba2091d19317e0350d169440e',1,'one_bit_full_adder::obfa_arch']]]
+  ['output_13',['output',['../classone__bit__full__adder_1_1obfa__arch.html#aa80f57dba2091d19317e0350d169440e',1,'one_bit_full_adder::obfa_arch']]],
+  ['output_5fdata_5fo_14',['OUTPUT_DATA_o',['../classleading__zero__counter__unit.html#a6f8b4f869d27457e8fe8237393b3df95',1,'leading_zero_counter_unit.OUTPUT_DATA_o()'],['../classlzc4__unit.html#acb2d8ce614c2918eeba50c62fe308e75',1,'lzc4_unit.OUTPUT_DATA_o()']]]
 ];

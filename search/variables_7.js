@@ -5,5 +5,10 @@ var searchData=
   ['left_5fshifter_2',['left_shifter',['../classdual__mode__shifter_1_1arch.html#a28708f111471e145fb6486a3130c9617',1,'dual_mode_shifter::arch']]],
   ['low_5feq_3',['low_eq',['../classfour__bit__comparator_1_1four__bit__arch.html#ab7c2c96a5b49c1662363302fa0bfea88',1,'four_bit_comparator::four_bit_arch']]],
   ['low_5fgt_4',['low_gt',['../classfour__bit__comparator_1_1four__bit__arch.html#a58e7c4d6bbcc67be40f0da7acc0e840c',1,'four_bit_comparator::four_bit_arch']]],
-  ['low_5flt_5',['low_lt',['../classfour__bit__comparator_1_1four__bit__arch.html#afe6f841d17c505165fe6d146e0dbc3ce',1,'four_bit_comparator::four_bit_arch']]]
+  ['low_5flt_5',['low_lt',['../classfour__bit__comparator_1_1four__bit__arch.html#afe6f841d17c505165fe6d146e0dbc3ce',1,'four_bit_comparator::four_bit_arch']]],
+  ['lzc0_6',['lzc0',['../classleading__zero__counter__unit_1_1arch.html#aefb1daabb8f85b54ee8d34130c4bd3c6',1,'leading_zero_counter_unit::arch']]],
+  ['lzc1_7',['lzc1',['../classleading__zero__counter__unit_1_1arch.html#aa9d1c53472a8773980402e5823a2ede2',1,'leading_zero_counter_unit::arch']]],
+  ['lzc2_8',['lzc2',['../classleading__zero__counter__unit_1_1arch.html#a8b9c76af8032dfc3faa48a292db89390',1,'leading_zero_counter_unit::arch']]],
+  ['lzc3_9',['lzc3',['../classleading__zero__counter__unit_1_1arch.html#a0bbd8f91c8475924ad16e8dca174e1a1',1,'leading_zero_counter_unit::arch']]],
+  ['lzc4_5funit_10',['lzc4_unit',['../classleading__zero__counter__unit_1_1arch.html#a1c1c9f9a511cdfba1eda733dcf2e40d9',1,'leading_zero_counter_unit::arch']]]
 ];

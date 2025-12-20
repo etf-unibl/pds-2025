@@ -17,5 +17,6 @@ var searchData=
   ['one_5fbit_5ffull_5fadder_2evhd_14',['one_bit_full_adder.vhd',['../34_2one__bit__full__adder_8vhd.html',1,'(Global Namespace)'],['../32_2one__bit__full__adder_8vhd.html',1,'(Global Namespace)']]],
   ['one_5fbit_5ffull_5fsubtractor_15',['one_bit_full_subtractor',['../classone__bit__full__subtractor.html',1,'one_bit_full_subtractor'],['../classfour__bit__full__subtractor_1_1fbfs__arch.html#ab7842e904bc6f4b67c1e9026de78c3b3',1,'four_bit_full_subtractor.fbfs_arch.one_bit_full_subtractor()']]],
   ['one_5fbit_5ffull_5fsubtractor_2evhd_16',['one_bit_full_subtractor.vhd',['../one__bit__full__subtractor_8vhd.html',1,'']]],
-  ['output_17',['output',['../classone__bit__full__adder_1_1obfa__arch.html#aa80f57dba2091d19317e0350d169440e',1,'one_bit_full_adder::obfa_arch']]]
+  ['output_17',['output',['../classone__bit__full__adder_1_1obfa__arch.html#aa80f57dba2091d19317e0350d169440e',1,'one_bit_full_adder::obfa_arch']]],
+  ['output_5fdata_5fo_18',['OUTPUT_DATA_o',['../classleading__zero__counter__unit.html#a6f8b4f869d27457e8fe8237393b3df95',1,'leading_zero_counter_unit.OUTPUT_DATA_o()'],['../classlzc4__unit.html#acb2d8ce614c2918eeba50c62fe308e75',1,'lzc4_unit.OUTPUT_DATA_o()']]]
 ];
