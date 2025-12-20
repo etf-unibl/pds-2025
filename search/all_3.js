@@ -7,12 +7,14 @@ var searchData=
   ['decoder_5f2_5f4_4',['decoder_2_4',['../classdecoder__2__4.html',1,'']]],
   ['decoder_5f2_5f4_2evhd_5',['decoder_2_4.vhd',['../decoder__2__4_8vhd.html',1,'']]],
   ['diff_5fres_5fsig_6',['diff_res_sig',['../classsimple__alu_1_1rtl.html#a0b32ab1fdea5cf28b030bb5090f83428',1,'simple_alu::rtl']]],
-  ['dual_5fmode_5fcomparator_7',['dual_mode_comparator',['../classdual__mode__comparator.html',1,'']]],
-  ['dual_5fmode_5fcomparator_2evhd_8',['dual_mode_comparator.vhd',['../dual__mode__comparator_8vhd.html',1,'']]],
-  ['dual_5fmode_5fshifter_9',['dual_mode_shifter',['../classdual__mode__shifter.html',1,'']]],
-  ['dual_5fmode_5fshifter_2evhd_10',['dual_mode_shifter.vhd',['../dual__mode__shifter_8vhd.html',1,'']]],
-  ['dual_5fmode_5fshifter_5fcfg_11',['dual_mode_shifter_cfg',['../dual__mode__shifter__cfg_8vhd.html#afd18c583475ea4a3d438d41bc0e5e7ec',1,'dual_mode_shifter_cfg.vhd']]],
-  ['dual_5fmode_5fshifter_5fcfg_2evhd_12',['dual_mode_shifter_cfg.vhd',['../dual__mode__shifter__cfg_8vhd.html',1,'']]],
-  ['dual_5fmode_5fshifter_5fopt_13',['dual_mode_shifter_opt',['../classdual__mode__shifter__opt.html',1,'']]],
-  ['dual_5fmode_5fshifter_5fopt_2evhd_14',['dual_mode_shifter_opt.vhd',['../dual__mode__shifter__opt_8vhd.html',1,'']]]
+  ['dual_5fedge_5fdetector_7',['dual_edge_detector',['../classdual__edge__detector.html',1,'']]],
+  ['dual_5fedge_5fdetector_2evhd_8',['dual_edge_detector.vhd',['../dual__edge__detector_8vhd.html',1,'']]],
+  ['dual_5fmode_5fcomparator_9',['dual_mode_comparator',['../classdual__mode__comparator.html',1,'']]],
+  ['dual_5fmode_5fcomparator_2evhd_10',['dual_mode_comparator.vhd',['../dual__mode__comparator_8vhd.html',1,'']]],
+  ['dual_5fmode_5fshifter_11',['dual_mode_shifter',['../classdual__mode__shifter.html',1,'']]],
+  ['dual_5fmode_5fshifter_2evhd_12',['dual_mode_shifter.vhd',['../dual__mode__shifter_8vhd.html',1,'']]],
+  ['dual_5fmode_5fshifter_5fcfg_13',['dual_mode_shifter_cfg',['../dual__mode__shifter__cfg_8vhd.html#afd18c583475ea4a3d438d41bc0e5e7ec',1,'dual_mode_shifter_cfg.vhd']]],
+  ['dual_5fmode_5fshifter_5fcfg_2evhd_14',['dual_mode_shifter_cfg.vhd',['../dual__mode__shifter__cfg_8vhd.html',1,'']]],
+  ['dual_5fmode_5fshifter_5fopt_15',['dual_mode_shifter_opt',['../classdual__mode__shifter__opt.html',1,'']]],
+  ['dual_5fmode_5fshifter_5fopt_2evhd_16',['dual_mode_shifter_opt.vhd',['../dual__mode__shifter__opt_8vhd.html',1,'']]]
 ];
