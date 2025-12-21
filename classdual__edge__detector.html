@@ -77,13 +77,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Entity definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector.">dual_edge_detector</a>.  
+<p>Entity definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector. Unit implements edge detector that is syncrhonous with the c...">dual_edge_detector</a>. Unit implements edge detector that is syncrhonous with the clock. Whenever input (strobe_i) changes it's state, either from 0 to 1, or 1 to 0, the output (p_o) should be high for exactly one clock cycle indicating that an edge has been detected. Output (p_o) is low otherwise.  
  <a href="classdual__edge__detector.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Entities</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html">arch</a> &#160;</td><td class="memItemRight" valign="bottom">architecture</td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Architecture implementation of the dual-edge detector.  <a href="classdual__edge__detector_1_1arch.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Architecture definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector. Unit implements edge detector that is syncrhonous with the c...">dual_edge_detector</a>. This architecture uses Moore's finite state machine. States of the machine are: zero, edge and one. State zero is entered in when strobe_i has value of '0' and current state is either zero or edge. State one is entered in when strobe_i has value of '1' and current state is either one or edge. State edge is entered in when strobe_i the current state is one and the value '0' or when state is zero and the value is '1' During the edge state output is high, meaning an edge is detected, otherwise it's low.  <a href="classdual__edge__detector_1_1arch.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="Libraries" name="Libraries"></a>
@@ -93,20 +93,22 @@ Libraries</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="Use_20Clauses" name="Use_20Clauses"></a>
 Use Clauses</h2></td></tr>
  <tr class="memitem:acd03516902501cd1c7296a98e22c6fcb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector.html#acd03516902501cd1c7296a98e22c6fcb">std_logic_1164</a>&#160;</td><td class="memItemRight" valign="bottom">  </td></tr>
+<tr class="memitem:a2edc34402b573437d5f25fa90ba4013e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector.html#a2edc34402b573437d5f25fa90ba4013e">numeric_std</a>&#160;</td><td class="memItemRight" valign="bottom">  </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="3"><h2 class="groupheader"><a id="Ports" name="Ports"></a>
 Ports</h2></td></tr>
  <tr class="memitem:ae8d3e5458b0e3cd523d6461463e36fe8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector.html#ae8d3e5458b0e3cd523d6461463e36fe8">clk_i</a> &#160;</td><td class="memItemLeft" align="right" valign="top"> <b><b><span class="keywordflow">in</span><span class="vhdlchar"> </span></b></b>&#160;</td><td class="memItemRight" valign="bottom"> <b><span class="keywordtype">std_logic</span><span class="vhdlchar"> </span></b></td></tr>
-<tr class="memdesc:ae8d3e5458b0e3cd523d6461463e36fe8"><td class="mdescLeft">&#160;</td><td class="mdescLeft">&#160;</td><td class="mdescRight">System clock.  <a href="#ae8d3e5458b0e3cd523d6461463e36fe8"></a><br /></td></tr>
+<tr class="memdesc:ae8d3e5458b0e3cd523d6461463e36fe8"><td class="mdescLeft">&#160;</td><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock input of the unit.  <a href="#ae8d3e5458b0e3cd523d6461463e36fe8"></a><br /></td></tr>
 <tr class="memitem:ab86c7a8eec3a8327e506892977f85708"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector.html#ab86c7a8eec3a8327e506892977f85708">rst_i</a> &#160;</td><td class="memItemLeft" align="right" valign="top"> <b><b><span class="keywordflow">in</span><span class="vhdlchar"> </span></b></b>&#160;</td><td class="memItemRight" valign="bottom"> <b><span class="keywordtype">std_logic</span><span class="vhdlchar"> </span></b></td></tr>
-<tr class="memdesc:ab86c7a8eec3a8327e506892977f85708"><td class="mdescLeft">&#160;</td><td class="mdescLeft">&#160;</td><td class="mdescRight">Active-high reset.  <a href="#ab86c7a8eec3a8327e506892977f85708"></a><br /></td></tr>
+<tr class="memdesc:ab86c7a8eec3a8327e506892977f85708"><td class="mdescLeft">&#160;</td><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset input of the unit.  <a href="#ab86c7a8eec3a8327e506892977f85708"></a><br /></td></tr>
 <tr class="memitem:a871c5d973bab7bde1f42aa8b4bec9c95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector.html#a871c5d973bab7bde1f42aa8b4bec9c95">strobe_i</a> &#160;</td><td class="memItemLeft" align="right" valign="top"> <b><b><span class="keywordflow">in</span><span class="vhdlchar"> </span></b></b>&#160;</td><td class="memItemRight" valign="bottom"> <b><span class="keywordtype">std_logic</span><span class="vhdlchar"> </span></b></td></tr>
-<tr class="memdesc:a871c5d973bab7bde1f42aa8b4bec9c95"><td class="mdescLeft">&#160;</td><td class="mdescLeft">&#160;</td><td class="mdescRight">Input signal whose edges are detected.  <a href="#a871c5d973bab7bde1f42aa8b4bec9c95"></a><br /></td></tr>
+<tr class="memdesc:a871c5d973bab7bde1f42aa8b4bec9c95"><td class="mdescLeft">&#160;</td><td class="mdescLeft">&#160;</td><td class="mdescRight">The input we are trying to detect edges from.  <a href="#a871c5d973bab7bde1f42aa8b4bec9c95"></a><br /></td></tr>
 <tr class="memitem:a1af0f33a3b9f83d231ccbe9a8c3a4927"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector.html#a1af0f33a3b9f83d231ccbe9a8c3a4927">p_o</a> &#160;</td><td class="memItemLeft" align="right" valign="top"> <b><b><span class="keywordflow">out</span><span class="vhdlchar"> </span></b></b>&#160;</td><td class="memItemRight" valign="bottom"> <b><span class="keywordtype">std_logic</span><span class="vhdlchar"> </span></b></td></tr>
-<tr class="memdesc:a1af0f33a3b9f83d231ccbe9a8c3a4927"><td class="mdescLeft">&#160;</td><td class="mdescLeft">&#160;</td><td class="mdescRight">Output signal asserted on any edge of input signal.  <a href="#a1af0f33a3b9f83d231ccbe9a8c3a4927"></a><br /></td></tr>
+<tr class="memdesc:a1af0f33a3b9f83d231ccbe9a8c3a4927"><td class="mdescLeft">&#160;</td><td class="mdescLeft">&#160;</td><td class="mdescRight">Output which signals that an edge is detected.  <a href="#a1af0f33a3b9f83d231ccbe9a8c3a4927"></a><br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Entity definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector.">dual_edge_detector</a>. </p>
+<div class="textblock"><p >Entity definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector. Unit implements edge detector that is syncrhonous with the c...">dual_edge_detector</a>. Unit implements edge detector that is syncrhonous with the clock. Whenever input (strobe_i) changes it's state, either from 0 to 1, or 1 to 0, the output (p_o) should be high for exactly one clock cycle indicating that an edge has been detected. Output (p_o) is low otherwise. </p>
+<p >Entity definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector. Unit implements edge detector that is syncrhonous with the c...">dual_edge_detector</a>. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ae8d3e5458b0e3cd523d6461463e36fe8" name="ae8d3e5458b0e3cd523d6461463e36fe8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8d3e5458b0e3cd523d6461463e36fe8">&#9670;&#160;</a></span>clk_i</h2>
@@ -128,7 +130,8 @@ Ports</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>System clock. </p>
+<p>Clock input of the unit. </p>
+<p >System clock. </p>
 
 </div>
 </div>
@@ -148,6 +151,28 @@ Ports</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">Library</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2edc34402b573437d5f25fa90ba4013e" name="a2edc34402b573437d5f25fa90ba4013e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2edc34402b573437d5f25fa90ba4013e">&#9670;&#160;</a></span>numeric_std</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classdual__edge__detector.html#a2edc34402b573437d5f25fa90ba4013e">numeric_std</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">use clause</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -174,7 +199,8 @@ Ports</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Output signal asserted on any edge of input signal. </p>
+<p>Output which signals that an edge is detected. </p>
+<p >Output signal asserted on any edge of input signal. </p>
 
 </div>
 </div>
@@ -198,7 +224,8 @@ Ports</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Active-high reset. </p>
+<p>Reset input of the unit. </p>
+<p >Active-high reset. </p>
 
 </div>
 </div>
@@ -244,12 +271,14 @@ Ports</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Input signal whose edges are detected. </p>
+<p>The input we are trying to detect edges from. </p>
+<p >Input signal whose edges are detected. </p>
 
 </div>
 </div>
-<hr/>The documentation for this design unit was generated from the following file:<ul>
-<li>72/<a class="el" href="dual__edge__detector_8vhd.html">dual_edge_detector.vhd</a></li>
+<hr/>The documentation for this design unit was generated from the following files:<ul>
+<li>71/<a class="el" href="71_2dual__edge__detector_8vhd.html">dual_edge_detector.vhd</a></li>
+<li>72/<a class="el" href="72_2dual__edge__detector_8vhd.html">dual_edge_detector.vhd</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

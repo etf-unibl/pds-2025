@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PDS-2025: 72/dual_edge_detector.vhd File Reference</title>
+<title>PDS-2025: 71/dual_edge_detector.vhd File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,7 +69,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_efc83fae2544064ee15f84b471520057.html">72</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d7838cf9171bda1a01e80454f99d143b.html">71</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -79,21 +79,20 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Dual-edge detector entity.  
+<p>Implements detector of both edges, meaning changes 0-&gt;1 and 1-&gt;0.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Entities</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector.html">dual_edge_detector</a> &#160;</td><td class="memItemRight" valign="bottom">entity</td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entity definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector.">dual_edge_detector</a>.  <a href="classdual__edge__detector.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entity definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector. Unit implements edge detector that is syncrhonous with the c...">dual_edge_detector</a>. Unit implements edge detector that is syncrhonous with the clock. Whenever input (strobe_i) changes it's state, either from 0 to 1, or 1 to 0, the output (p_o) should be high for exactly one clock cycle indicating that an edge has been detected. Output (p_o) is low otherwise.  <a href="classdual__edge__detector.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html">arch</a> &#160;</td><td class="memItemRight" valign="bottom">architecture</td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Architecture implementation of the dual-edge detector.  <a href="classdual__edge__detector_1_1arch.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Architecture definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector. Unit implements edge detector that is syncrhonous with the c...">dual_edge_detector</a>. This architecture uses Moore's finite state machine. States of the machine are: zero, edge and one. State zero is entered in when strobe_i has value of '0' and current state is either zero or edge. State one is entered in when strobe_i has value of '1' and current state is either one or edge. State edge is entered in when strobe_i the current state is one and the value '0' or when state is zero and the value is '1' During the edge state output is high, meaning an edge is detected, otherwise it's low.  <a href="classdual__edge__detector_1_1arch.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Dual-edge detector entity. </p>
-<p >Defines the interface for detecting rising and falling edges on strobe_i. </p>
+<div class="textblock"><p >Implements detector of both edges, meaning changes 0-&gt;1 and 1-&gt;0. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

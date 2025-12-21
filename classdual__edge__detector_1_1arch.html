@@ -81,33 +81,113 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Architecture implementation of the dual-edge detector.  
+<p>Architecture definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector. Unit implements edge detector that is syncrhonous with the c...">dual_edge_detector</a>. This architecture uses Moore's finite state machine. States of the machine are: zero, edge and one. State zero is entered in when strobe_i has value of '0' and current state is either zero or edge. State one is entered in when strobe_i has value of '1' and current state is either one or edge. State edge is entered in when strobe_i the current state is one and the value '0' or when state is zero and the value is '1' During the edge state output is high, meaning an edge is detected, otherwise it's low.  
  <a href="classdual__edge__detector_1_1arch.html#details">More...</a></p>
 <b>Architecture &gt;&gt; </b><a class="el" href="classdual__edge__detector_1_1arch.html">arch</a><br />
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="Processes" name="Processes"></a>
 Processes</h2></td></tr>
- <tr class="memitem:a5e6f5a8eb3ec33ab9ec81c14c2dbf4e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a5e6f5a8eb3ec33ab9ec81c14c2dbf4e0">PROCESS_7</a>&#160;</td><td class="memItemRight" valign="bottom"><b> ( <b><b><a class="el" href="classdual__edge__detector.html#ae8d3e5458b0e3cd523d6461463e36fe8">clk_i</a></b> <span class="vhdlchar"> </span></b> , <b><b><a class="el" href="classdual__edge__detector.html#ab86c7a8eec3a8327e506892977f85708">rst_i</a></b> <span class="vhdlchar"> </span></b> )</b></td></tr>
+ <tr class="memitem:aaa0c745648d2f5d90cfc8ee57b353be8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#aaa0c745648d2f5d90cfc8ee57b353be8">state</a>&#160;</td><td class="memItemRight" valign="bottom"><b> ( <b><b><a class="el" href="classdual__edge__detector.html#ae8d3e5458b0e3cd523d6461463e36fe8">clk_i</a></b> <span class="vhdlchar"> </span></b> , <b><b><a class="el" href="classdual__edge__detector.html#ab86c7a8eec3a8327e506892977f85708">rst_i</a></b> <span class="vhdlchar"> </span></b> )</b></td></tr>
+<tr class="memdesc:aaa0c745648d2f5d90cfc8ee57b353be8"><td class="mdescLeft">&#160;</td><td class="mdescRight">state register  <a href="#aaa0c745648d2f5d90cfc8ee57b353be8"></a><br /></td></tr>
+<tr class="memitem:a82fd5f28626ec370da1a8ad2b3ca881c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a82fd5f28626ec370da1a8ad2b3ca881c">next_state</a>&#160;</td><td class="memItemRight" valign="bottom"><b> ( <b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a60b8ce072a921a2d81848a58496ae98a">state_reg</a></b> <span class="vhdlchar"> </span></b> , <b><b><a class="el" href="classdual__edge__detector.html#a871c5d973bab7bde1f42aa8b4bec9c95">strobe_i</a></b> <span class="vhdlchar"> </span></b> )</b></td></tr>
+<tr class="memdesc:a82fd5f28626ec370da1a8ad2b3ca881c"><td class="mdescLeft">&#160;</td><td class="mdescRight">next-state logic  <a href="#a82fd5f28626ec370da1a8ad2b3ca881c"></a><br /></td></tr>
+<tr class="memitem:a0a0e11713fd7681075b591ca7cf41e1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a0a0e11713fd7681075b591ca7cf41e1d">output</a>&#160;</td><td class="memItemRight" valign="bottom"><b> ( <b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a60b8ce072a921a2d81848a58496ae98a">state_reg</a></b> <span class="vhdlchar"> </span></b> )</b></td></tr>
+<tr class="memdesc:a0a0e11713fd7681075b591ca7cf41e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output logic.  <a href="#a0a0e11713fd7681075b591ca7cf41e1d"></a><br /></td></tr>
+<tr class="memitem:a5e6f5a8eb3ec33ab9ec81c14c2dbf4e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a5e6f5a8eb3ec33ab9ec81c14c2dbf4e0">PROCESS_7</a>&#160;</td><td class="memItemRight" valign="bottom"><b> ( <b><b><a class="el" href="classdual__edge__detector.html#ae8d3e5458b0e3cd523d6461463e36fe8">clk_i</a></b> <span class="vhdlchar"> </span></b> , <b><b><a class="el" href="classdual__edge__detector.html#ab86c7a8eec3a8327e506892977f85708">rst_i</a></b> <span class="vhdlchar"> </span></b> )</b></td></tr>
 <tr class="memdesc:a5e6f5a8eb3ec33ab9ec81c14c2dbf4e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">State register.  <a href="#a5e6f5a8eb3ec33ab9ec81c14c2dbf4e0"></a><br /></td></tr>
-<tr class="memitem:a285280707004f07cf91fe480972fd169"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a285280707004f07cf91fe480972fd169">PROCESS_8</a>&#160;</td><td class="memItemRight" valign="bottom"><b> ( <b><b><a class="el" href="classdual__edge__detector_1_1arch.html#ad1806f6cfc8ad7dc9f65dbb6ecba33e6">state_reg</a></b> <span class="vhdlchar"> </span></b> , <b><b><a class="el" href="classdual__edge__detector.html#a871c5d973bab7bde1f42aa8b4bec9c95">strobe_i</a></b> <span class="vhdlchar"> </span></b> )</b></td></tr>
+<tr class="memitem:a285280707004f07cf91fe480972fd169"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a285280707004f07cf91fe480972fd169">PROCESS_8</a>&#160;</td><td class="memItemRight" valign="bottom"><b> ( <b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a60b8ce072a921a2d81848a58496ae98a">state_reg</a></b> <span class="vhdlchar"> </span></b> , <b><b><a class="el" href="classdual__edge__detector.html#a871c5d973bab7bde1f42aa8b4bec9c95">strobe_i</a></b> <span class="vhdlchar"> </span></b> )</b></td></tr>
 <tr class="memdesc:a285280707004f07cf91fe480972fd169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Next-state logic.  <a href="#a285280707004f07cf91fe480972fd169"></a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="Types" name="Types"></a>
 Types</h2></td></tr>
- <tr class="memitem:a6e8bf7b6e6d2938f0309bb2645a89db6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a6e8bf7b6e6d2938f0309bb2645a89db6">t_state</a> &#160;</td><td class="memItemRight" valign="bottom"><b><span class="vhdlchar">(</span><span class="vhdlchar"> </span><span class="vhdlchar">zero</span><span class="vhdlchar"> </span><span class="vhdlchar">,</span><span class="vhdlchar"> </span><span class="vhdlchar">one</span><span class="vhdlchar"> </span><span class="vhdlchar">)</span><span class="vhdlchar"> </span></b></td></tr>
+ <tr class="memitem:a8aef0897ce713f2b9a21f4e2cf6fbbcf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a8aef0897ce713f2b9a21f4e2cf6fbbcf">t_mc_sm_type</a> &#160;</td><td class="memItemRight" valign="bottom"><b><span class="vhdlchar">(</span><span class="vhdlchar"> </span><span class="vhdlchar">zero</span><span class="vhdlchar"> </span><span class="vhdlchar">,</span><span class="vhdlchar"> </span><span class="vhdlchar">edge</span><span class="vhdlchar"> </span><span class="vhdlchar">,</span><span class="vhdlchar"> </span><span class="vhdlchar">one</span><span class="vhdlchar"> </span><span class="vhdlchar">)</span><span class="vhdlchar"> </span></b></td></tr>
+<tr class="memitem:a6e8bf7b6e6d2938f0309bb2645a89db6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a6e8bf7b6e6d2938f0309bb2645a89db6">t_state</a> &#160;</td><td class="memItemRight" valign="bottom"><b><span class="vhdlchar">(</span><span class="vhdlchar"> </span><span class="vhdlchar">zero</span><span class="vhdlchar"> </span><span class="vhdlchar">,</span><span class="vhdlchar"> </span><span class="vhdlchar">one</span><span class="vhdlchar"> </span><span class="vhdlchar">)</span><span class="vhdlchar"> </span></b></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="Signals" name="Signals"></a>
 Signals</h2></td></tr>
- <tr class="memitem:ad1806f6cfc8ad7dc9f65dbb6ecba33e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#ad1806f6cfc8ad7dc9f65dbb6ecba33e6">state_reg</a> &#160;</td><td class="memItemRight" valign="bottom"><b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a6e8bf7b6e6d2938f0309bb2645a89db6">t_state</a></b> <span class="vhdlchar"> </span></b></td></tr>
+ <tr class="memitem:a60b8ce072a921a2d81848a58496ae98a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a60b8ce072a921a2d81848a58496ae98a">state_reg</a> &#160;</td><td class="memItemRight" valign="bottom"><b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a8aef0897ce713f2b9a21f4e2cf6fbbcf">t_mc_sm_type</a></b> <span class="vhdlchar"> </span></b></td></tr>
+<tr class="memitem:a8c07484210646baeb10c3b11d73e73ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#a8c07484210646baeb10c3b11d73e73ef">state_next</a> &#160;</td><td class="memItemRight" valign="bottom"><b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a8aef0897ce713f2b9a21f4e2cf6fbbcf">t_mc_sm_type</a></b> <span class="vhdlchar"> </span></b></td></tr>
+<tr class="memitem:ad1806f6cfc8ad7dc9f65dbb6ecba33e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#ad1806f6cfc8ad7dc9f65dbb6ecba33e6">state_reg</a> &#160;</td><td class="memItemRight" valign="bottom"><b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a6e8bf7b6e6d2938f0309bb2645a89db6">t_state</a></b> <span class="vhdlchar"> </span></b></td></tr>
 <tr class="memitem:aeaaabf450775d2d7defff345afa661c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdual__edge__detector_1_1arch.html#aeaaabf450775d2d7defff345afa661c9">state_next</a> &#160;</td><td class="memItemRight" valign="bottom"><b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a6e8bf7b6e6d2938f0309bb2645a89db6">t_state</a></b> <span class="vhdlchar"> </span></b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Architecture implementation of the dual-edge detector. </p>
+<div class="textblock"><p >Architecture definition of <a class="el" href="classdual__edge__detector.html" title="Entity definition of dual_edge_detector. Unit implements edge detector that is syncrhonous with the c...">dual_edge_detector</a>. This architecture uses Moore's finite state machine. States of the machine are: zero, edge and one. State zero is entered in when strobe_i has value of '0' and current state is either zero or edge. State one is entered in when strobe_i has value of '1' and current state is either one or edge. State edge is entered in when strobe_i the current state is one and the value '0' or when state is zero and the value is '1' During the edge state output is high, meaning an edge is detected, otherwise it's low. </p>
+<p >Architecture implementation of the dual-edge detector.</p>
 <p >Implements a two-state Mealy FSM:</p><ul>
 <li>state "zero" represents strobe_i = '0'</li>
 <li>state "one" represents strobe_i = '1' </li>
 </ul>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a82fd5f28626ec370da1a8ad2b3ca881c" name="a82fd5f28626ec370da1a8ad2b3ca881c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82fd5f28626ec370da1a8ad2b3ca881c">&#9670;&#160;</a></span>next_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <b><span class="vhdlchar"> </span></b> next_state</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a60b8ce072a921a2d81848a58496ae98a">state_reg</a></b> <span class="vhdlchar"> </span></b> <em></em> , </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><b><b><a class="el" href="classdual__edge__detector.html#a871c5d973bab7bde1f42aa8b4bec9c95">strobe_i</a></b> <span class="vhdlchar"> </span></b> <em></em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">Process</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>next-state logic </p>
+
+</div>
+</div>
+<a id="a0a0e11713fd7681075b591ca7cf41e1d" name="a0a0e11713fd7681075b591ca7cf41e1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a0e11713fd7681075b591ca7cf41e1d">&#9670;&#160;</a></span>output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <b><span class="vhdlchar"> </span></b> output</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a60b8ce072a921a2d81848a58496ae98a">state_reg</a></b> <span class="vhdlchar"> </span></b> <em></em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">Process</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Output logic. </p>
+
+</div>
+</div>
 <a id="a5e6f5a8eb3ec33ab9ec81c14c2dbf4e0" name="a5e6f5a8eb3ec33ab9ec81c14c2dbf4e0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5e6f5a8eb3ec33ab9ec81c14c2dbf4e0">&#9670;&#160;</a></span>PROCESS_7()</h2>
 
@@ -163,7 +243,7 @@ Signals</h2></td></tr>
           <td class="memname"> <b><span class="vhdlchar"> </span></b> PROCESS_8</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><b><b><a class="el" href="classdual__edge__detector_1_1arch.html#ad1806f6cfc8ad7dc9f65dbb6ecba33e6">state_reg</a></b> <span class="vhdlchar"> </span></b> <em></em> , </td>
+          <td class="paramname"><b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a60b8ce072a921a2d81848a58496ae98a">state_reg</a></b> <span class="vhdlchar"> </span></b> <em></em> , </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -192,9 +272,69 @@ Signals</h2></td></tr>
 
 </div>
 </div>
+<a id="aaa0c745648d2f5d90cfc8ee57b353be8" name="aaa0c745648d2f5d90cfc8ee57b353be8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa0c745648d2f5d90cfc8ee57b353be8">&#9670;&#160;</a></span>state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> <b><span class="vhdlchar"> </span></b> state</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><b><b><a class="el" href="classdual__edge__detector.html#ae8d3e5458b0e3cd523d6461463e36fe8">clk_i</a></b> <span class="vhdlchar"> </span></b> <em></em> , </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><b><b><a class="el" href="classdual__edge__detector.html#ab86c7a8eec3a8327e506892977f85708">rst_i</a></b> <span class="vhdlchar"> </span></b> <em></em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">Process</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>state register </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8c07484210646baeb10c3b11d73e73ef" name="a8c07484210646baeb10c3b11d73e73ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c07484210646baeb10c3b11d73e73ef">&#9670;&#160;</a></span>state_next <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classdual__edge__detector_1_1arch.html#a8c07484210646baeb10c3b11d73e73ef">state_next</a> <b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a8aef0897ce713f2b9a21f4e2cf6fbbcf">t_mc_sm_type</a></b> <span class="vhdlchar"> </span></b> </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">Signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aeaaabf450775d2d7defff345afa661c9" name="aeaaabf450775d2d7defff345afa661c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeaaabf450775d2d7defff345afa661c9">&#9670;&#160;</a></span>state_next</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaaabf450775d2d7defff345afa661c9">&#9670;&#160;</a></span>state_next <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -215,8 +355,30 @@ Signals</h2></td></tr>
 
 </div>
 </div>
+<a id="a60b8ce072a921a2d81848a58496ae98a" name="a60b8ce072a921a2d81848a58496ae98a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60b8ce072a921a2d81848a58496ae98a">&#9670;&#160;</a></span>state_reg <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classdual__edge__detector_1_1arch.html#a60b8ce072a921a2d81848a58496ae98a">state_reg</a> <b><b><a class="el" href="classdual__edge__detector_1_1arch.html#a8aef0897ce713f2b9a21f4e2cf6fbbcf">t_mc_sm_type</a></b> <span class="vhdlchar"> </span></b> </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">Signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad1806f6cfc8ad7dc9f65dbb6ecba33e6" name="ad1806f6cfc8ad7dc9f65dbb6ecba33e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1806f6cfc8ad7dc9f65dbb6ecba33e6">&#9670;&#160;</a></span>state_reg</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1806f6cfc8ad7dc9f65dbb6ecba33e6">&#9670;&#160;</a></span>state_reg <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,6 +393,28 @@ Signals</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">Signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8aef0897ce713f2b9a21f4e2cf6fbbcf" name="a8aef0897ce713f2b9a21f4e2cf6fbbcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aef0897ce713f2b9a21f4e2cf6fbbcf">&#9670;&#160;</a></span>t_mc_sm_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classdual__edge__detector_1_1arch.html#a8aef0897ce713f2b9a21f4e2cf6fbbcf">t_mc_sm_type</a> <b><span class="vhdlchar">(</span><span class="vhdlchar"> </span><span class="vhdlchar">zero</span><span class="vhdlchar"> </span><span class="vhdlchar">,</span><span class="vhdlchar"> </span><span class="vhdlchar">edge</span><span class="vhdlchar"> </span><span class="vhdlchar">,</span><span class="vhdlchar"> </span><span class="vhdlchar">one</span><span class="vhdlchar"> </span><span class="vhdlchar">)</span><span class="vhdlchar"> </span></b> </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">Type</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -259,8 +443,9 @@ Signals</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this design unit was generated from the following file:<ul>
-<li>72/<a class="el" href="dual__edge__detector_8vhd.html">dual_edge_detector.vhd</a></li>
+<hr/>The documentation for this design unit was generated from the following files:<ul>
+<li>71/<a class="el" href="71_2dual__edge__detector_8vhd.html">dual_edge_detector.vhd</a></li>
+<li>72/<a class="el" href="72_2dual__edge__detector_8vhd.html">dual_edge_detector.vhd</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
