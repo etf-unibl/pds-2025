@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['test_0',['test',['../classtest.html',1,'']]],
-  ['test_5farch_1',['test_arch',['../classtest_1_1test__arch.html',1,'test']]],
-  ['three_5fmode_5fbarrel_5fshifter_2',['three_mode_barrel_shifter',['../classthree__mode__barrel__shifter.html',1,'']]],
-  ['two_5fbit_5farch_3',['two_bit_arch',['../classtwo__bit__comparator_1_1two__bit__arch.html',1,'two_bit_comparator']]],
-  ['two_5fbit_5fcomparator_4',['two_bit_comparator',['../classtwo__bit__comparator.html',1,'']]]
+  ['simple_5falu_0',['simple_alu',['../classsimple__alu.html',1,'']]],
+  ['single_5fdigit_5fbcd_5fadder_1',['single_digit_bcd_adder',['../classsingle__digit__bcd__adder.html',1,'']]],
+  ['str_5farch_2',['str_arch',['../classfour__bit__full__adder_1_1str__arch.html',1,'four_bit_full_adder']]]
 ];
