@@ -13,5 +13,7 @@ var searchData=
   ['bit_5freverser_2evhd_10',['bit_reverser.vhd',['../bit__reverser_8vhd.html',1,'']]],
   ['blc_5farch_11',['blc_arch',['../classone__bit__full__adder_1_1blc__arch.html',1,'one_bit_full_adder']]],
   ['both_5fzero_12',['both_zero',['../classdual__mode__comparator_1_1arch.html#a0de3d4d9642959acc4d2d716e8826d65',1,'dual_mode_comparator::arch']]],
-  ['burst_5fi_13',['burst_i',['../classmem__ctrl.html#a885e4ca53b89e6899e56a6e9154e0d43',1,'mem_ctrl']]]
+  ['buf_5freg_13',['buf_reg',['../classpreamble__generator_1_1arch.html#a6dad673009a5aa9f15b209e064164abd',1,'preamble_generator::arch']]],
+  ['buffered_5fdata_14',['buffered_data',['../classpreamble__generator_1_1arch.html#a44e8e48f021549192e99d72b012187a9',1,'preamble_generator::arch']]],
+  ['burst_5fi_15',['burst_i',['../classmem__ctrl.html#a885e4ca53b89e6899e56a6e9154e0d43',1,'mem_ctrl']]]
 ];
