@@ -110,6 +110,8 @@ begin
     variable exp_bcd4 : std_logic_vector(3 downto 0);
     variable got_dec  : integer;
     variable exp_dec  : integer;
+    variable error_count : integer := 0;
+    variable total_tests : integer := 0;
   begin
     rst_i    <= '1';
     start_i  <= '0';
@@ -152,7 +154,7 @@ begin
          (bcd3_o /= exp_bcd3) or
          (bcd4_o /= exp_bcd4)
       then
-
+        error_count := error_count + 1;
         assert false report "ERROR: value=" & integer'image(value) &
                " expected=" & integer'image(exp_dec) &
                " got="      & integer'image(got_dec)
@@ -160,7 +162,11 @@ begin
       end if;
     end loop;
 
-    assert false report "Simulation finished." severity note;
+    if error_count > 0 then
+      assert false report "Simulation failed on " & integer'image(error_count) & " tests.";
+    else
+      assert false report "Simulation finished with 0 errors." severity note;
+    end if;
     flag <= '1';
     wait;
   end process stim_proc;
