@@ -77,7 +77,7 @@ architecture arch of sequential_multiplier_tb is
 begin
 
   --! @brief Instantiate the sequential multiplier
-  uut : entity work.sequential_multiplier
+  uut : sequential_multiplier
     port map(
       clk_i   => clk_i,
       rst_i   => rst_i,
