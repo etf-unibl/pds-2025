@@ -56,6 +56,19 @@ end entity sequential_multiplier_tb;
 --!          checks output, logs results to CSV, and reports test pass/fail.
 architecture arch of sequential_multiplier_tb is
 
+  --! @brief Sequential multiplier component declaration
+  component sequential_multiplier
+    port (
+      clk_i   : in  std_logic;
+      rst_i   : in  std_logic;
+      start_i : in  std_logic;
+      a_i     : in  std_logic_vector(7 downto 0);
+      b_i     : in  std_logic_vector(7 downto 0);
+      c_o     : out std_logic_vector(15 downto 0);
+      ready_o : out std_logic
+    );
+  end component;
+
   --! @brief Clock period for simulation
   constant c_CLK_PERIOD : time := 32 ns;
   --! @brief Maximum operand value
