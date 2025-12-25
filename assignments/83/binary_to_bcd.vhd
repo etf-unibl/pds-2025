@@ -9,7 +9,7 @@
 -- description:   Sequential converter from a 13-bit binary number to a
 --                4-digit BCD representation. Implements the classic
 --                shift-add-3 (double dabble) algorithm using RT design
---                methodology with a separated control and data path.
+--                methodology with separated control and data paths.
 -----------------------------------------------------------------------------
 -- Copyright (c) 2025 Faculty of Electrical Engineering
 -----------------------------------------------------------------------------
@@ -45,7 +45,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
---! @brief   Entity for binary-to-BCD conversion.
+--! @brief Entity for binary-to-BCD conversion.
 entity binary_to_bcd is
   port(
     --! System clock (rising-edge active).
@@ -100,7 +100,7 @@ architecture arch of binary_to_bcd is
   signal cnt_done : std_logic;
 
 begin
-  --control path: state register
+  --! control path: state register
   process(clk_i, rst_i)
   begin
     if rst_i = '1' then
@@ -110,7 +110,7 @@ begin
     end if;
   end process;
 
-  --control path: next-state logic
+  --! control path: next-state logic
   process(state_reg, start_i, cnt_done)
   begin
     case state_reg is
@@ -142,7 +142,7 @@ begin
 
   ready_o <= '1' when state_reg = idle else '0';
 
-  --data path: registers
+  --! data path: registers
   process(clk_i, rst_i)
   begin
     if rst_i = '1' then
@@ -162,7 +162,7 @@ begin
     end if;
   end process;
 
-  --data path: combinational logic (routing and functional units)
+  --! data path: combinational logic (routing and functional units)
   process(state_reg, binary_i, bin_reg, bcd1_reg, bcd2_reg, bcd3_reg, bcd4_reg, cnt_reg)
     --! Temporary BCD digit values for the add-3 step.
     variable tmp_bcd1, tmp_bcd2, tmp_bcd3, tmp_bcd4 : unsigned(3 downto 0);
@@ -170,7 +170,7 @@ begin
     variable tmp_all : unsigned(28 downto 0); --4*4+13-1
 
   begin
-      -- default: hold current values
+
     bin_next  <= bin_reg;
     bcd1_next <= bcd1_reg;
     bcd2_next <= bcd2_reg;
@@ -180,9 +180,8 @@ begin
 
     case state_reg is
       when idle =>
-        null;   -- no data-path activity in idle
+        null;
 
-         -- load input and clear BCD digits and counter
       when init =>
         bin_next  <= unsigned(binary_i);
         bcd1_next <= (others => '0');
@@ -191,7 +190,6 @@ begin
         bcd4_next <= (others => '0');
         cnt_next  <= (others => '0');
 
-         -- add-3 correction for each BCD digit >= 5
       when add3 =>
         tmp_bcd1 := bcd1_reg;
         tmp_bcd2 := bcd2_reg;
@@ -223,7 +221,7 @@ begin
         tmp_all := bcd4_reg & bcd3_reg & bcd2_reg & bcd1_reg & bin_reg;
         tmp_all := shift_left(tmp_all, 1);
 
-             -- unpack BCD digits and binary remainder
+
         bcd4_next <= tmp_all(28 downto 25);
         bcd3_next <= tmp_all(24 downto 21);
         bcd2_next <= tmp_all(20 downto 17);
@@ -233,10 +231,10 @@ begin
         cnt_next <= cnt_reg + 1;
 
       when done =>
-        null; -- hold result until next start
+        null; 
     end case;
   end process;
-  -- status and outputs
+
   --! Asserted when all c_N_BITS bits have been processed.
   cnt_done <= '1' when cnt_reg = to_unsigned(c_N_BITS-1, cnt_reg'length) else '0';
 
