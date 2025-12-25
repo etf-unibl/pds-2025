@@ -70,8 +70,9 @@ entity sequential_divider is
     a_i     : in  std_logic_vector(7 downto 0); --! Unsigned dividend input
     b_i     : in  std_logic_vector(7 downto 0); --! Unsigned divisor input
     q_o     : out std_logic_vector(7 downto 0); --! Unsigned quotient output
-    r_o     : out std_logic_vector(7 downto 0); --! Unsigned remainder outpu
-    ready_o : out std_logic
+    r_o     : out std_logic_vector(7 downto 0); --! Unsigned remainder output
+    ready_o : out std_logic --! Ready/valid flag: '1' in IDLE (samples start_i) and q_o/r_o valid; '0' while busy
+
 );
 end sequential_divider;
 
@@ -122,7 +123,7 @@ begin
   --! - load  -> done  for special cases (b=0 or a<b), else -> divide
   --! - divide-> done  after last iteration (bit 0 processed)
   --! - done  -> idle
-  process(state_reg, start_i, a_i, b_i, count_is_0, divisor_is_0, dividend_lt_divisor)
+  process(state_reg, start_i, count_is_0, divisor_is_0, dividend_lt_divisor)
   begin
     case state_reg is
       when idle =>
