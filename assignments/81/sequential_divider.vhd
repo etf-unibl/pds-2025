@@ -41,9 +41,9 @@
 -----------------------------------------------------------------------------
 --! @file sequential_divider.vhd
 --! @brief Implements an 8-bit sequential divider using the Repeated
---  Subtraction algorithm.
+--!        Subtraction algorithm.
 --! @details Dividing by zero results in NaN value for both the quotient and
---  the remainder. The NaN value equals 255.
+--!          the remainder. The NaN value equals 255.
 -----------------------------------------------------------------------------
 
 --! Use standard library
