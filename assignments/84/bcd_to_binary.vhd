@@ -4,7 +4,7 @@
 -- https://github.com/etf-unibl/pds-2025/
 -----------------------------------------------------------------------------
 --
--- unit name:     bcd_to_bindary
+-- unit name:     bcd_to_binary
 --
 -- description:
 --
@@ -69,7 +69,7 @@ end bcd_to_binary;
 --! This architecture uses Moore's finite state machine and
 --! Register-Transfer method.
 --! States of the machine are: idle, load, bcd0 and op.
---! Machine starts in the idle state nad stays in it until input
+--! Machine starts in the idle state and stays in it until input
 --! start_i is high and input rst_i is low.
 --! From idle state machine goes to load state where inputs are loaded.
 --! If both of the input bcd digits are equal to zero, machine goes to
@@ -174,7 +174,7 @@ begin
     end if;
   end process data_reg;
 
-  --! data path: routing multipexer
+  --! data path: routing multiplexer
   routing_mux : process(state_reg, bcd1_reg, bcd2_reg, r_reg,
                         bcd1_i, bcd2_i, shifter_out, sub_out, n_reg, n_next, bcd1_pom, bcd2_pom)
   begin
