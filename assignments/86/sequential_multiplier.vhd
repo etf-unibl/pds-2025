@@ -44,13 +44,13 @@ use ieee.numeric_std.all;
 --! operations without returning to the idle state.
 entity sequential_multiplier is
   port (
-    clk_i   : in  std_logic;
-    rst_i   : in  std_logic;
-    start_i : in  std_logic;
-    a_i     : in  std_logic_vector(7 downto 0);
-    b_i     : in  std_logic_vector(7 downto 0);
-    c_o     : out std_logic_vector(15 downto 0);
-    ready_o : out std_logic
+    clk_i   : in  std_logic;                     --! @brief Clock input for the unit.
+    rst_i   : in  std_logic;                     --! @brief Reset input for the unit.
+    start_i : in  std_logic;                     --! @brief The input which starts addition.
+    a_i     : in  std_logic_vector(7 downto 0);  --! @brief First operand.
+    b_i     : in  std_logic_vector(7 downto 0);  --! @brief Second operand.
+    c_o     : out std_logic_vector(15 downto 0); --! @brief Result of the addition.
+    ready_o : out std_logic                      --! @brief Ready flag which signals when the unit is ready for the execution
 );
 end sequential_multiplier;
 
@@ -111,7 +111,7 @@ begin
         end if;
     end case;
   end process;
-  --! control path: output logic
+  --! Control path: output logic
   ready_o <= '1' when state_reg = idle else '0';
   --! @brief Datapath registers
   --! Stores operands, loop counter, and accumulation result.
@@ -150,13 +150,13 @@ begin
         r_next <= adder_out;
     end case;
   end process;
-  --! data path: functional units
+  --! Data path: functional units
   adder_out <= ("00000000" & a_reg) + r_reg;
   sub_out <= n_reg - 1;
-  --! data path: status
+  --! Data path: status
   a_is_0 <= '1' when a_i = "00000000" else '0';
   b_is_0 <= '1' when b_i = "00000000" else '0';
   count_0 <= '1' when n_next = "00000000" else '0';
-  --! data path: output
+  --! Data path: output
   c_o <= std_logic_vector(r_reg);
 end arch;
