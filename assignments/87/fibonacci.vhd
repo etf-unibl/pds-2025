@@ -61,10 +61,10 @@ entity fibonacci is
 end fibonacci;
 
 --! @brief Architecture implementing the fibonacci logic
-architecture rtl of fibonacci is
+architecture arch of fibonacci is
 
   --! @brief Internal data width
-  constant C_WIDTH : integer := 21;
+  constant c_WIDTH : integer := 21;
 
   --! @brief Type that represents possible states of fibonacci
   type t_state is (S_IDLE, S_INIT, S_CALC);
@@ -73,12 +73,12 @@ architecture rtl of fibonacci is
   signal cs_reg, ns_next : t_state := S_IDLE;
 
   --! @brief Datapath registers
-  signal prev_reg, prev_next : unsigned(2*C_WIDTH downto 0);
-  signal curr_reg, curr_next : unsigned(2*C_WIDTH downto 0);
+  signal prev_reg, prev_next : unsigned(2*c_WIDTH downto 0);
+  signal curr_reg, curr_next : unsigned(2*c_WIDTH downto 0);
   signal cnt_reg,  cnt_next  : unsigned(5 downto 0);
 
   --! @brief Datapath signals
-  signal sum_val  : unsigned(2*C_WIDTH downto 0);
+  signal sum_val  : unsigned(2*c_WIDTH downto 0);
   signal dec_cnt  : unsigned(5 downto 0);
 
   --! @brief Status signals
@@ -132,7 +132,7 @@ begin
   --! The ready_o signal is asserted when the FSM is in the idle state,
   --! indicating that the module is ready to accept a new start command
   ready_o <= '1' when cs_reg = S_IDLE else '0';
-  
+
   --! @brief Datapath registers
   --! @details Determines next values for registers based on FSM state
   process(clk_i, rst_i)
@@ -196,4 +196,4 @@ begin
   --! The output remains stable until a new computation is started
   r_o <= std_logic_vector(curr_reg);
 
-end rtl;
+end arch;
