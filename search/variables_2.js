@@ -8,7 +8,7 @@ var searchData=
   ['c_5fnan_5',['c_NAN',['../classsequential__divider_1_1arch.html#a2b13c561a751580b1ef8b31f04f43a70',1,'sequential_divider::arch']]],
   ['c_5fo_6',['c_o',['../classsequential__multiplier.html#a76e2ba4fbea38cd72a840077e7e90d6b',1,'sequential_multiplier']]],
   ['c_5fout_7',['c_out',['../classone__bit__full__adder.html#a06cc7913fab86a3df739734392e5654a',1,'one_bit_full_adder']]],
-  ['c_5fwidth_8',['c_WIDTH',['../classsequential__divider_1_1arch.html#adb806df96aca7b092756058bb10c105f',1,'sequential_divider.arch.c_WIDTH()'],['../classsequential__multiplier_1_1arch.html#adb806df96aca7b092756058bb10c105f',1,'sequential_multiplier.arch.c_WIDTH()'],['../classbcd__to__binary_1_1arch.html#a8704d6aaf5a780c7e4e3d80061eedbf8',1,'bcd_to_binary.arch.c_WIDTH()']]],
+  ['c_5fwidth_8',['c_WIDTH',['../classsequential__divider_1_1arch.html#adb806df96aca7b092756058bb10c105f',1,'sequential_divider.arch.c_WIDTH()'],['../classsequential__multiplier_1_1arch.html#a0911259ac3e8c5f1b58347b580c4b137',1,'sequential_multiplier.arch.c_WIDTH()'],['../classbcd__to__binary_1_1arch.html#a8704d6aaf5a780c7e4e3d80061eedbf8',1,'bcd_to_binary.arch.c_WIDTH()']]],
   ['c_5fwidth_5fres_9',['c_WIDTH_RES',['../classbcd__to__binary_1_1arch.html#a84c12fb0a26ea11f319e8d6d57fe84b8',1,'bcd_to_binary::arch']]],
   ['can_5fexecute_10',['can_execute',['../classpreamble__generator_1_1arch.html#a98de677357b7b8510ec1bc7af94fcdb4',1,'preamble_generator::arch']]],
   ['carry_5fdiff_11',['carry_diff',['../classsimple__alu_1_1rtl.html#a37f7735ab75372d13be80a13bb918da1',1,'simple_alu::rtl']]],
@@ -20,7 +20,7 @@ var searchData=
   ['cnt_5fdec_17',['cnt_dec',['../classsequential__multiplier_1_1arch.html#ae0403ab5a33e858c8865269cd3c9fa67',1,'sequential_multiplier::arch']]],
   ['cnt_5fnext_18',['cnt_next',['../classsequential__multiplier_1_1arch.html#aad230063434893804e81e62e84d0a40b',1,'sequential_multiplier::arch']]],
   ['cnt_5freg_19',['cnt_reg',['../classsequential__multiplier_1_1arch.html#a3310fa2df9d183f7d4bb04cdf61e456d',1,'sequential_multiplier::arch']]],
-  ['count_5f0_20',['count_0',['../classsequential__divider_1_1arch.html#aaf6e5458926f104f28195e5264fc7db0',1,'sequential_divider::arch']]],
+  ['count_5f0_20',['count_0',['../classsequential__divider_1_1arch.html#aaf6e5458926f104f28195e5264fc7db0',1,'sequential_divider.arch.count_0()'],['../classsequential__multiplier_1_1arch.html#aaf6e5458926f104f28195e5264fc7db0',1,'sequential_multiplier.arch.count_0()']]],
   ['ctrl_5fi_21',['CTRL_i',['../classmulti__function__aritmetic__unit.html#a1aa2e5ef5609c8d8b3ab99ba9fbc0c64',1,'multi_function_aritmetic_unit']]],
   ['current_5fstate_22',['current_state',['../classnrzi__decoder_1_1arch.html#af8c722b57ba5e82be3e4c7c09e2d6f7f',1,'nrzi_decoder::arch']]]
 ];

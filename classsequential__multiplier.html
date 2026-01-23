@@ -76,6 +76,9 @@ $(function() {
   <div class="headertitle"><div class="title">sequential_multiplier Entity Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Sequential multiplier unit Implements multiplication of two 8-bit unsigned operands using a finite-state machine and repeated addition. Supports back-to-back operations without returning to the idle state.  
+ <a href="classsequential__multiplier.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Entities</h2></td></tr>
@@ -109,7 +112,9 @@ Ports</h2></td></tr>
 <tr class="memitem:a1eee7aa1c7736b4fef002293cec8af26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsequential__multiplier.html#a1eee7aa1c7736b4fef002293cec8af26">ready_o</a> &#160;</td><td class="memItemLeft" align="right" valign="top"> <b><b><span class="keywordflow">out</span><span class="vhdlchar"> </span></b></b>&#160;</td><td class="memItemRight" valign="bottom"> <b><span class="keywordtype">std_logic</span><span class="vhdlchar"> </span></b></td></tr>
 <tr class="memdesc:a1eee7aa1c7736b4fef002293cec8af26"><td class="mdescLeft">&#160;</td><td class="mdescLeft">&#160;</td><td class="mdescRight">High when multiplication is done.  <a href="#a1eee7aa1c7736b4fef002293cec8af26"></a><br /></td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Sequential multiplier unit Implements multiplication of two 8-bit unsigned operands using a finite-state machine and repeated addition. Supports back-to-back operations without returning to the idle state. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a6efc80214fd042989784059710facf1e" name="a6efc80214fd042989784059710facf1e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6efc80214fd042989784059710facf1e">&#9670;&#160;</a></span>a_i</h2>
 
@@ -131,6 +136,7 @@ Ports</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Multiplicand. </p>
+<p >@brief First operand. </p>
 
 </div>
 </div>
@@ -155,6 +161,7 @@ Ports</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Multiplier. </p>
+<p >@brief Second operand. </p>
 
 </div>
 </div>
@@ -179,6 +186,7 @@ Ports</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Product output. </p>
+<p >@brief Result of the addition. </p>
 
 </div>
 </div>
@@ -203,6 +211,7 @@ Ports</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Entity port definitions Input clock signal. </p>
+<p >@brief Clock input for the unit. </p>
 
 </div>
 </div>
@@ -271,6 +280,7 @@ Ports</h2></td></tr>
 </div><div class="memdoc">
 
 <p>High when multiplication is done. </p>
+<p >Ready flag which signals when the unit is ready for the execution. </p>
 
 </div>
 </div>
@@ -295,6 +305,7 @@ Ports</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Active-high synchronous reset. </p>
+<p >@brief Reset input for the unit. </p>
 
 </div>
 </div>
@@ -319,6 +330,7 @@ Ports</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Start signal for multiplication. </p>
+<p >@brief The input which starts addition. </p>
 
 </div>
 </div>
@@ -344,8 +356,9 @@ Ports</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this design unit was generated from the following file:<ul>
-<li>82/<a class="el" href="sequential__multiplier_8vhd.html">sequential_multiplier.vhd</a></li>
+<hr/>The documentation for this design unit was generated from the following files:<ul>
+<li>82/<a class="el" href="82_2sequential__multiplier_8vhd.html">sequential_multiplier.vhd</a></li>
+<li>86/<a class="el" href="86_2sequential__multiplier_8vhd.html">sequential_multiplier.vhd</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
