@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['r_5fnext_0',['r_next',['../classsequential__multiplier_1_1arch.html#afcd9aa5e534845b295eb10368a7eebaf',1,'sequential_multiplier.arch.r_next()'],['../classbcd__to__binary_1_1arch.html#a4a80eaa9388b1bb806b5e00b9704f430',1,'bcd_to_binary.arch.r_next()']]],
-  ['r_5fo_1',['r_o',['../classsequential__divider.html#ac3992e2d3aee38edf6102ae0d9ef0393',1,'sequential_divider']]],
-  ['r_5fo_2',['R_o',['../classeight__bit__divider.html#a32f6a70f70db2069780c49a995a57b6a',1,'eight_bit_divider']]],
-  ['r_5freg_3',['r_reg',['../classbcd__to__binary_1_1arch.html#a7e62b8080b562b691193cb9876032ecf',1,'bcd_to_binary.arch.r_reg()'],['../classsequential__multiplier_1_1arch.html#a4449311303600f43a5860a64935ae3c5',1,'sequential_multiplier.arch.r_reg()']]],
+  ['r_5fnext_0',['r_next',['../classsequential__divider_1_1arch.html#a8e7f58be7493d4060573f9df7ece0f11',1,'sequential_divider.arch.r_next()'],['../classbcd__to__binary_1_1arch.html#a4a80eaa9388b1bb806b5e00b9704f430',1,'bcd_to_binary.arch.r_next()'],['../classsequential__multiplier_1_1arch.html#afcd9aa5e534845b295eb10368a7eebaf',1,'sequential_multiplier.arch.r_next()']]],
+  ['r_5fo_1',['R_o',['../classeight__bit__divider.html#a32f6a70f70db2069780c49a995a57b6a',1,'eight_bit_divider']]],
+  ['r_5fo_2',['r_o',['../classsequential__divider.html#ac3992e2d3aee38edf6102ae0d9ef0393',1,'sequential_divider']]],
+  ['r_5freg_3',['r_reg',['../classbcd__to__binary_1_1arch.html#a7e62b8080b562b691193cb9876032ecf',1,'bcd_to_binary.arch.r_reg()'],['../classsequential__divider_1_1arch.html#a0b21b700b7f7daa611342ea239f08681',1,'sequential_divider.arch.r_reg()'],['../classsequential__multiplier_1_1arch.html#a4449311303600f43a5860a64935ae3c5',1,'sequential_multiplier.arch.r_reg()']]],
   ['ready_5fo_4',['ready_o',['../classsequential__divider.html#a1eee7aa1c7736b4fef002293cec8af26',1,'sequential_divider.ready_o()'],['../classsequential__multiplier.html#a1eee7aa1c7736b4fef002293cec8af26',1,'sequential_multiplier.ready_o()'],['../classbinary__to__bcd.html#a1eee7aa1c7736b4fef002293cec8af26',1,'binary_to_bcd.ready_o()'],['../classbcd__to__binary.html#a1eee7aa1c7736b4fef002293cec8af26',1,'bcd_to_binary.ready_o()']]],
   ['res_5fo_5',['RES_o',['../classmulti__function__aritmetic__unit.html#a99587f97eac9328ba0a0f0fcebcad414',1,'multi_function_aritmetic_unit']]],
   ['rev_5fin_5fi_6',['REV_IN_i',['../classbit__reverser.html#a52e4dbe89e4b33f43440ae070acf5af9',1,'bit_reverser']]],
