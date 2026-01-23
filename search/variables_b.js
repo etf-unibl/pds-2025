@@ -10,5 +10,8 @@ var searchData=
   ['p7_7',['p7',['../classone__bit__full__adder_1_1blc__arch.html#a9fd647df8d55a82b4ebadf5b36dc6452',1,'one_bit_full_adder::blc_arch']]],
   ['p8_8',['p8',['../classone__bit__full__adder_1_1blc__arch.html#a7a1213fc40871da1960a33caa4a5b4a7',1,'one_bit_full_adder::blc_arch']]],
   ['p9_9',['p9',['../classone__bit__full__adder_1_1blc__arch.html#a7ef25b47844ffe60057c45d19741494b',1,'one_bit_full_adder::blc_arch']]],
-  ['p_5fo_10',['p_o',['../classdual__edge__detector.html#a1af0f33a3b9f83d231ccbe9a8c3a4927',1,'dual_edge_detector']]]
+  ['p_5fadd_10',['p_add',['../classsequential__multiplier_1_1arch.html#a09c47a06dd79bc77853cd648e2482743',1,'sequential_multiplier::arch']]],
+  ['p_5fnext_11',['p_next',['../classsequential__multiplier_1_1arch.html#a42734310d6f2ca4e0636db9c520c4b26',1,'sequential_multiplier::arch']]],
+  ['p_5fo_12',['p_o',['../classdual__edge__detector.html#a1af0f33a3b9f83d231ccbe9a8c3a4927',1,'dual_edge_detector']]],
+  ['p_5freg_13',['p_reg',['../classsequential__multiplier_1_1arch.html#acf0189e30aa32c48a0a8c5796e2efa09',1,'sequential_multiplier::arch']]]
 ];

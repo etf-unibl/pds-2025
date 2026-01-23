@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['r_5fo_0',['R_o',['../classeight__bit__divider.html#a32f6a70f70db2069780c49a995a57b6a',1,'eight_bit_divider']]],
-  ['r_5fo_1',['r_o',['../classsequential__divider.html#ac3992e2d3aee38edf6102ae0d9ef0393',1,'sequential_divider']]],
-  ['ready_5fo_2',['ready_o',['../classsequential__divider.html#a1eee7aa1c7736b4fef002293cec8af26',1,'sequential_divider']]],
+  ['r_5fo_0',['r_o',['../classsequential__divider.html#ac3992e2d3aee38edf6102ae0d9ef0393',1,'sequential_divider']]],
+  ['r_5fo_1',['R_o',['../classeight__bit__divider.html#a32f6a70f70db2069780c49a995a57b6a',1,'eight_bit_divider']]],
+  ['ready_5fo_2',['ready_o',['../classsequential__divider.html#a1eee7aa1c7736b4fef002293cec8af26',1,'sequential_divider.ready_o()'],['../classsequential__multiplier.html#a1eee7aa1c7736b4fef002293cec8af26',1,'sequential_multiplier.ready_o()']]],
   ['res_5fo_3',['RES_o',['../classmulti__function__aritmetic__unit.html#a99587f97eac9328ba0a0f0fcebcad414',1,'multi_function_aritmetic_unit']]],
   ['rev_5fin_5fi_4',['REV_IN_i',['../classbit__reverser.html#a52e4dbe89e4b33f43440ae070acf5af9',1,'bit_reverser']]],
   ['rev_5finput_5',['rev_input',['../classdual__mode__shifter__opt_1_1arch.html#a8accabb4bdc74c4cd7c3e7266954d35f',1,'dual_mode_shifter_opt::arch']]],
@@ -12,7 +12,8 @@ var searchData=
   ['right_5fshifter_2evhd_9',['right_shifter.vhd',['../unoptimized__arch_2right__shifter_8vhd.html',1,'(Global Namespace)'],['../right__shifter_8vhd.html',1,'(Global Namespace)']]],
   ['rm_5fnext_10',['rm_next',['../classsequential__divider_1_1arch.html#a38286240d373bbaec28d8fbad14ccb00',1,'sequential_divider::arch']]],
   ['rm_5freg_11',['rm_reg',['../classsequential__divider_1_1arch.html#a628306da7ab9eff3c58e13fe8ca6b09e',1,'sequential_divider::arch']]],
-  ['rst_5fi_12',['rst_i',['../classpreamble__detector.html#ab86c7a8eec3a8327e506892977f85708',1,'preamble_detector.rst_i()'],['../classdual__edge__detector.html#ab86c7a8eec3a8327e506892977f85708',1,'dual_edge_detector.rst_i()'],['../classmem__ctrl.html#ab86c7a8eec3a8327e506892977f85708',1,'mem_ctrl.rst_i()'],['../classsequential__divider.html#ab86c7a8eec3a8327e506892977f85708',1,'sequential_divider.rst_i()'],['../classnrzi__encoder.html#ab86c7a8eec3a8327e506892977f85708',1,'nrzi_encoder.rst_i()'],['../classnrzi__decoder.html#ab86c7a8eec3a8327e506892977f85708',1,'nrzi_decoder.rst_i()'],['../classpreamble__generator.html#ab86c7a8eec3a8327e506892977f85708',1,'preamble_generator.rst_i()']]],
-  ['rtl_13',['rtl',['../classd__ff__tb_1_1rtl.html',1,'rtl'],['../classfour__bit__signed__comparator_1_1rtl.html',1,'rtl'],['../classfour__bit__signed__comparator__v2_1_1rtl.html',1,'rtl'],['../classsimple__alu_1_1rtl.html',1,'rtl'],['../classtest_1_1rtl.html',1,'rtl']]],
-  ['rw_5fi_14',['rw_i',['../classmem__ctrl.html#ad92f4c30f64488d3a4dc5b98804e4fa1',1,'mem_ctrl']]]
+  ['routing_5fmultiplexer_12',['routing_multiplexer',['../classsequential__multiplier_1_1arch.html#a5c38b486ccde2249de1e0a5decdf834a',1,'sequential_multiplier::arch']]],
+  ['rst_5fi_13',['rst_i',['../classdual__edge__detector.html#ab86c7a8eec3a8327e506892977f85708',1,'dual_edge_detector.rst_i()'],['../classmem__ctrl.html#ab86c7a8eec3a8327e506892977f85708',1,'mem_ctrl.rst_i()'],['../classsequential__divider.html#ab86c7a8eec3a8327e506892977f85708',1,'sequential_divider.rst_i()'],['../classsequential__multiplier.html#ab86c7a8eec3a8327e506892977f85708',1,'sequential_multiplier.rst_i()'],['../classnrzi__encoder.html#ab86c7a8eec3a8327e506892977f85708',1,'nrzi_encoder.rst_i()'],['../classnrzi__decoder.html#ab86c7a8eec3a8327e506892977f85708',1,'nrzi_decoder.rst_i()'],['../classpreamble__generator.html#ab86c7a8eec3a8327e506892977f85708',1,'preamble_generator.rst_i()'],['../classpreamble__detector.html#ab86c7a8eec3a8327e506892977f85708',1,'preamble_detector.rst_i()']]],
+  ['rtl_14',['rtl',['../classd__ff__tb_1_1rtl.html',1,'rtl'],['../classfour__bit__signed__comparator_1_1rtl.html',1,'rtl'],['../classfour__bit__signed__comparator__v2_1_1rtl.html',1,'rtl'],['../classsimple__alu_1_1rtl.html',1,'rtl'],['../classtest_1_1rtl.html',1,'rtl']]],
+  ['rw_5fi_15',['rw_i',['../classmem__ctrl.html#ad92f4c30f64488d3a4dc5b98804e4fa1',1,'mem_ctrl']]]
 ];

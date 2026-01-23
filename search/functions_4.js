@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['output_0',['output',['../classdual__edge__detector_1_1arch.html#a0a0e11713fd7681075b591ca7cf41e1d',1,'dual_edge_detector::arch']]],
-  ['output_5fbuffer_1',['output_buffer',['../classpreamble__generator_1_1arch.html#a37f97a6d915ece9f9c6a8e67c93defa3',1,'preamble_generator::arch']]]
+  ['next_5fstate_0',['next_state',['../classpreamble__generator_1_1arch.html#a0ed47b312feddf2dedf21adcb609c165',1,'preamble_generator.arch.next_state()'],['../classdual__edge__detector_1_1arch.html#a82fd5f28626ec370da1a8ad2b3ca881c',1,'dual_edge_detector.arch.next_state()']]],
+  ['next_5fstate_5flogic_1',['next_state_logic',['../classsequential__multiplier_1_1arch.html#ad24abea8e14a87329a12b4dc863e75cc',1,'sequential_multiplier::arch']]]
 ];
